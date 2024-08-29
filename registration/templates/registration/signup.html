@@ -1,0 +1,256 @@
+{% include "patient/header.html" %} {% load static %}
+<link rel="stylesheet" href="{% static 'css/Log_in_style.css' %}"/>
+<!-- Your content goes here -->
+
+<div class="wrapper" style="overflow-y: scroll; scrollbar-width: none;">
+  <div>
+    <!--form-box-login -->
+
+    <!--default admin base html check-->
+    <h3 class="text-center p-3 signupLabel">Sign Up</h3>
+    <div class="p-2">
+      <form method="post" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+        <!-- Nav tab -->
+        <div class="container">
+          <div class="row">
+            <div class="col-4">
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label signupLabel"
+                  >First Name
+                </label>
+                <div class="input-group">                      
+                  <input
+                    type="text"
+                    class="form-control signupInput"
+                    id="exampleFormControlInput1"
+                    placeholder="First Name"
+                    name="fname"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label signupLabel">
+                  Last Name
+                </label>
+                <div class="input-group">
+                  <input
+                    type="text"
+                    class="form-control signupInput"
+                    id="exampleFormControlInput1"
+                    placeholder="Last Name" 
+                    name="lname"                                               
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label signupLabel">
+                  Account Type
+                </label>
+                <div class="input-group">
+                  <select
+                    class="form-select form-select-sm signupInput"
+                    aria-label="Small select example"
+                    name="accountType"
+                  >                    
+                    <option class="signupOption" value="1">Patient</option>
+                    <option class="signupOption" value="2">Psychiatrist</option>
+                    <option class="signupOption" value="3">Psychologist</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container">
+          <div class="row">
+            <div class="col-4">
+              <label for="exampleFormControlInput1" class="form-label d-block signupLabel"
+                >Gender</label
+              >
+
+              <div class="form-check form-check-inline">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  id="inlineCheckbox1"
+                  name="gender"
+                  value="Male"
+                />
+                <label class="form-check-label signupLabel" for="inlineCheckbox1"
+                  >Male</label
+                >
+              </div>
+
+              <div class="form-check form-check-inline">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  id="inlineCheckbox2"
+                  name="gender"
+                  value="Female"
+                />
+                <label class="form-check-label signupLabel" for="inlineCheckbox2"
+                  >Female</label
+                >
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label signupLabel"
+                  >Date of Birth</label
+                >
+                <input
+                  type="date"
+                  class="form-control signupInput"
+                  id="exampleFormControlInput1"
+                  placeholder="last name"
+                  name="dob"
+                />
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="mb-3">
+                <label
+                  for="exampleFormControlInput1"
+                  class="form-label text-start signupLabel"
+                  >Email ID</label
+                >
+                <input
+                  type="email"
+                  class="form-control signupInput"
+                  id="exampleFormControlInput1"
+                  placeholder="name@gmail.com"
+                  name="email"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container">
+          <div class="row">
+            <div class="col-4">
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label signupLabel"
+                  >Mobile
+                </label>
+                <div class="input-group">                      
+                  <input
+                    type="text"
+                    class="form-control signupInput"
+                    id="exampleFormControlInput1"
+                    placeholder="01*********"
+                    name="contact"
+                  />
+                </div>
+              </div>
+            </div>                              
+            <div class="col-4">
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label signupLabel"
+                  >Blood Group</label
+                >
+                <div class="input-group">                      
+                  <select
+                    class="form-select form-select-sm signupInput"
+                    aria-label="Small select example"
+                    name="blood"
+                  >
+                    <option class="signupOption" selected>Select</option>
+                    <option class="signupOption" value="A+">A+</option>
+                    <option class="signupOption" value="A-">A-</option>
+                    <option class="signupOption" value="B+">B+</option>
+                    <option class="signupOption" value="B-">B-</option>
+                    <option class="signupOption" value="O+">O+</option>
+                    <option class="signupOption" value="O-">O-</option>
+                    <option class="signupOption" value="AB+">AB+</option>
+                    <option class="signupOption" value="AB-">AB-</option>
+                  </select>
+                </div>
+              </div>
+            </div>                
+            <div class="col-4">
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label signupLabel">
+                  Country
+                </label>
+                <div class="input-group">
+                  <input
+                    type="text"
+                    class="form-control signupInput"
+                    id="exampleFormControlInput1"
+                    placeholder="country"  
+                    name="country"                                              
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>  
+        <div class="container">
+          <div class="row">                
+            <div class="col">
+              <div class="signupInput" style="width: 18rem">
+                <p>Upload Image</p>
+                <img
+                src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+                class="card-img-top"
+                alt="..."
+                style="width: 100%;"
+                />
+                <div class="mb-3">
+                <input class="form-control signupInput" type="file" id="formFile" name="profileImg" />
+                </div>
+              </div>   
+            </div>        
+            <div class="col">
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label signupLabel">
+                  Password
+                </label>
+                <div class="input-group">                      
+                  <input
+                    type="password"
+                    class="form-control signupInput"
+                    id="exampleFormControlInput1"
+                    placeholder="password"
+                    name="password"
+                  />
+                </div>
+              </div>            
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label signupLabel">
+                  Confirm Password
+                </label>
+                <div class="input-group">                      
+                  <input
+                    type="password"
+                    class="form-control signupInput"
+                    id="exampleFormControlInput1"
+                    placeholder="confirm password"
+                    name="cpassword"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container col-12">
+          <button class="butn" type="submit">Create Account</button>
+        </div>
+      </div>
+      </form> 
+    </div>
+  </div>
+
+  <script
+    type="text/javascript"
+    src="{% static 'js_files/login.js' %}"
+  ></script>
+
+  {% include "patient/footer.html" %}
+</div>
