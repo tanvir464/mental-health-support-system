@@ -1,0 +1,60 @@
+{% include "patient/header.html" %}
+{% load static %}
+
+<link rel= 'stylesheet' href="{% static 'css/Log_in_style.css' %}" >
+<!-- Your content goes here -->
+   
+<div class = "wrapper" style="overflow: hidden;">
+    <span class="bg_animate"></span>
+    <div class="form-box login">  <!--form-box-login -->
+        <h2>Login</h2>
+
+<!--default admin base html check-->
+
+        <form method = "post" action ="">
+            {% csrf_token %}
+            <!--action: This attribute specifies the URL 
+            where the form data should be sent when the 
+            form is submitted. In this case, the value is "#",
+            which typically means the form will not be submitted 
+            to a server but will instead cause 
+            the page to scroll to the top (or stay on the same page).-->
+
+            <div class="input_box">
+                <input type="text" required name = "contact">
+                <label>User Mobile No or Email</label>
+                <!--code from boxicons user font-->
+                <i class='bx bxs-user'></i>
+            </div>
+
+
+            <div class="input_box">
+                <input type="password" required name = "password">
+                <label>Password</label>
+                <!--code from boxicons lock font-->
+                <i class='bx bxs-lock-alt'></i>
+            </div>
+
+            {% comment %} <a href="/patient">
+            <button type="" class="btn">Login</button></a> {% endcomment %}
+            <button class="butn">Login</button>
+
+            
+            <div class="logreg_link">
+                <p>Don't have an account? <a href="{% url "registration:signup" %}"
+                    class="register_link">Sign Up</a></p>
+            </div>
+
+            </form>
+
+
+    </div>
+    <div class="info_text login">
+        <h2> Welcome Back!</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+
+    </div>
+
+<script type = "text/javascript" src="{% static 'js_files/login.js' %}"></script>
+
+{% include "patient/footer.html" %}
