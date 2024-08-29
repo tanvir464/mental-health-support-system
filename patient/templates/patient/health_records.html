@@ -1,0 +1,169 @@
+{% extends "patient/base_app.html" %} {% block content %}
+<!-- Start home content -->
+<div class="card m-1 p-2 shadow rounded">
+  <!-- Prescription List start -->
+  <h3 class="text-center">Health Records</h3>
+  <div class="container">
+    <div class="row">
+      <div class="col text-start">
+        <h4>Prescription</h4>
+        <div class="table-responsive mt-3">
+          {% comment %} table of prescription patient db {% endcomment %}
+          <table
+            class="table table-hover table-bordered table-striped text-center"
+          >
+            <thead>
+              <tr>
+                <th scope="col">SID</th>
+                <th scope="col">Prescribed By</th>
+                <th scope="col">Date</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for pres in presdata %}
+              <tr>
+                <td scope="row">{{pres.0}}</td>
+                <td>
+                  <span class="mx-1">{{pres.2}} {{pres.3}}
+                    ({% if pres.4 == 2 %}Psychiatrist{% elif pres.4 == 3 %}Psychologist{% endif %})
+                  </span>
+                </td>
+
+                <td>{{pres.1}}</td>
+
+                <td>
+                  <div
+                    class="btn-group"
+                    role="group"
+                    aria-label="Basic example"
+                  ><a href="{% url "patient:prescription_card" pres.0 %}">
+                    <button
+                      type="button"
+                      class="btn btn-outline-primary me-1 rounded"
+                    >
+                      <i class="fa-solid fa-eye"></i>
+                    </button></a>
+                    <button
+                      type="button"
+                      class="btn btn-outline-success me-1 rounded"
+                    >
+                      <i class="fa-solid fa-file-arrow-down"></i>
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btn-outline-danger rounded"
+                    >
+                      <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          <!-- Prescription list end -->
+
+          <!-- Prescription nav start -->
+          <nav aria-label="...">
+            <ul class="pagination justify-content-center">
+              <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1" aria-disabled="true"
+                  >Previous</a
+                >
+              </li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item active" aria-current="page">
+                <a class="page-link" href="#">2</a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item">
+                <a class="page-link" href="#">Next</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <!-- Perscription nav end -->
+      </div>
+      <div class="col text-end">
+        {% comment %} table of diagnosis report patient db {% endcomment %}
+        <h4>Diagnosis report</h4>
+        <!-- Diagnosis report list start -->
+        <div class="table-responsive mt-3">
+          <table
+            class="table table-hover table-bordered table-striped text-center"
+          >
+            <thead>
+              <tr>
+                <th scope="col">SID</th>
+                <th scope="col">Diagnosis Center</th>
+                <th scope="col">Date</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for r in reportdata %}
+              <tr>
+                <td scope="row">{{r.0}}</td>
+                <td>{{r.3}}</td>
+
+                <td>{{r.1}}</td>
+
+                <td>
+                  <div
+                    class="btn-group"
+                    role="group"
+                    aria-label="Basic example"
+                  ><a href="{% url "diagnosis:report_card" r.0 %}">
+                    <button
+                      type="button"
+                      class="btn btn-outline-primary me-1 rounded"
+                    >
+                      <i class="fa-solid fa-eye"></i>
+                    </button></a>
+                    <button
+                      type="button"
+                      class="btn btn-outline-success me-1 rounded"
+                    >
+                      <i class="fa-solid fa-file-arrow-down"></i>
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btn-outline-danger rounded"
+                    >
+                      <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          <!-- Diagnosis report list end -->
+
+          <!-- report nav start -->
+          <nav aria-label="...">
+            <ul class="pagination justify-content-center">
+              <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1" aria-disabled="true"
+                  >Previous</a
+                >
+              </li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item active" aria-current="page">
+                <a class="page-link" href="#">2</a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item">
+                <a class="page-link" href="#">Next</a>
+              </li>
+            </ul>
+          </nav>
+          <!-- report nav end -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

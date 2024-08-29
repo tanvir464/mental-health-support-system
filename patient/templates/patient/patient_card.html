@@ -1,0 +1,338 @@
+{% extends 'patient/base_app.html '%} {% block content %} {% load static %}
+
+<div class="main-content" style="min-height: 100vh">
+    <!-- Start home content -->
+    <!-- Patient profile start -->
+    <div class="card p-2 shadow gx-3 border-0" style="background-color: #427558;">
+        <div class="container">
+            <div class="row">
+              <div class="col">
+                <h2>{{data.1}} {{data.2}}</h2> <!-- fname, lname -->                                                          
+                <p>{{data.4}}</p> <!-- phone no -->
+                <p style="text-transform: lowercase;">{{data.5}}</p> <!-- email -->
+                <p>Date of Birth : {{data.6}}</p> <!-- dob -->
+                <address>House no: {{data.9}}, Road no: {{data.8}}, {{data.10}}, {{data.11}}<br>{{data.12}}</address> <!-- road no, house no -->
+              </div>
+              <div class="col  text-end">
+                <img class="rounded-circle border border-2 shadow profile" alt="Patient Photo" src="https://cdn1.iconfinder.com/data/icons/metro-ui-dock-icon-set--icons-by-dakirby/512/User_No-Frame.png"/>
+              </div>                  
+            </div>
+          </div>
+    </div>      
+    <!-- patient profile end -->
+    
+    <!-- Prescription list start -->
+    <div class="card p-3">
+        <h4>Prescription</h4>
+              <div class="table-responsive mt-3">
+                <table
+                  class="table table-hover table-bordered table-striped text-center"
+                >
+                  <thead>
+                    <tr>
+                      <th scope="col">SID</th>
+                      <th scope="col">Prescribed Specialist</th>
+                      <th scope="col">Date</th>
+                      <th scope="col">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for pres in presdata %}
+              <tr>
+                <td scope="row">{{pres.0}}</td>
+                <td>
+                  <span class="mx-1">{{pres.2}} {{pres.3}}
+                    ({% if pres.4 == 2 %}Psychiatrist{% elif pres.4 == 3 %}Psychologist{% endif %})
+                  </span>
+                </td>
+
+                <td>{{pres.1}}</td>
+
+                <td>
+                  <div
+                    class="btn-group"
+                    role="group"
+                    aria-label="Basic example"
+                  ><a href="{% url "patient:prescription_card" pres.0 %}">
+                    <button
+                      type="button"
+                      class="btn btn-outline-primary me-1 rounded"
+                    >
+                      <i class="fa-solid fa-eye"></i>
+                    </button></a>
+                    <button
+                      type="button"
+                      class="btn btn-outline-success me-1 rounded"
+                    >
+                      <i class="fa-solid fa-file-arrow-down"></i>
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btn-outline-danger rounded"
+                    >
+                      <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              {% endfor %}
+                  </tbody>
+                </table>
+                <!-- Prescription list end -->
+
+                <!-- Prescription nav start -->
+                <nav aria-label="...">
+                  <ul class="pagination justify-content-center">
+                    <li class="page-item disabled">
+                      <a
+                        class="page-link"
+                        href="#"
+                        tabindex="-1"
+                        aria-disabled="true"
+                        >Previous</a
+                      >
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item active" aria-current="page">
+                      <a class="page-link" href="#">2</a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                      <a class="page-link" href="#">Next</a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+              <!-- Perscription nav end -->
+    </div>
+    <!-- Prescription list end -->
+    <!-- Report list start -->
+    <div class="card p-3">
+        <h4>Diagnosis report</h4>
+              <!-- Diagnosis report list start -->
+              <div class="table-responsive mt-3">
+                <table
+                  class="table table-hover table-bordered table-striped text-center"
+                >
+                  <thead>
+                    <tr>
+                      <th scope="col">SID</th>
+                      <th scope="col">Diagnosis Center</th>
+                      <th scope="col">Date</th>
+                      <th scope="col">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for r in reportdata %}
+                    <tr>
+                      <td scope="row">{{r.0}}</td>
+                      <td>{{r.3}}</td>
+      
+                      <td>{{r.1}}</td>
+      
+                      <td>
+                        <div
+                          class="btn-group"
+                          role="group"
+                          aria-label="Basic example"
+                        ><a href="{% url "diagnosis:report_card" r.0 %}">
+                          <button
+                            type="button"
+                            class="btn btn-outline-primary me-1 rounded"
+                          >
+                            <i class="fa-solid fa-eye"></i>
+                          </button>
+                          <button
+                            type="button"
+                            class="btn btn-outline-success me-1 rounded"
+                          >
+                            <i class="fa-solid fa-file-arrow-down"></i>
+                          </button>
+                          <button
+                            type="button"
+                            class="btn btn-outline-danger rounded"
+                          >
+                            <i class="fa-solid fa-trash-can"></i>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+                <!-- Diagnosis report list end -->
+
+                <!-- report nav start -->
+                <nav aria-label="...">
+                  <ul class="pagination justify-content-center">
+                    <li class="page-item disabled">
+                      <a
+                        class="page-link"
+                        href="#"
+                        tabindex="-1"
+                        aria-disabled="true"
+                        >Previous</a
+                      >
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item active" aria-current="page">
+                      <a class="page-link" href="#">2</a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                      <a class="page-link" href="#">Next</a>
+                    </li>
+                  </ul>
+                </nav>
+                <!-- report nav end -->
+    </div>
+    <!-- Report list end -->
+    </div>
+    <div class="card p-3">
+      <h4>Event</h4>
+        <!-- event list start -->
+        <div class="table-responsive mt-3">              
+          <table class="table table-hover table-bordered table-striped text-center">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Type</th>
+                <th scope="col">Topic</th>
+                <th scope="col">Type</th>
+                <th scope="col">Date</th>
+                <th scope="col">Time</th>
+                <th scope="col">Duration</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for e in event %}
+              <tr>
+                <td scope="row">{{e.2}}</td>
+                <td>{{e.0}}</td>
+                <td>
+                  {% if e.1 == 1 %}NGO
+                  {% elif e.1 == 2 %}NPO
+                  {% elif e.1 == 3 %}Govt.
+                  {% endif %}
+                </td>  
+                <td>{{e.3}}</td>                          
+                <td>{% if e.4 == 1 %}Online{% elif e.4 == 2 %}Physical{% endif %}</td>
+                <td>{{e.6}}</td>
+                <td>{{e.7}}</td>
+                <td>{{e.8}}hr</td>
+                <td>
+                  <div class="btn-group" role="group" aria-label="Basic example">
+                    <a href="{% url "organization:event_card" e.2 %}">
+                    <button type="button" class="btn btn-outline-primary me-1 rounded">
+                        <i class="fa-solid fa-eye"></i>
+                    </button></a>
+                    <button type="button" class="btn btn-outline-danger rounded">
+                      <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                  </div>                
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          <nav aria-label="...">
+            <ul class="pagination justify-content-center">
+              <li class="page-item disabled">
+                <a
+                  class="page-link"
+                  href="#"
+                  tabindex="-1"
+                  aria-disabled="true"
+                  >Previous</a
+                >
+              </li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item active" aria-current="page">
+                <a class="page-link" href="#">2</a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item">
+                <a class="page-link" href="#">Next</a>
+              </li>
+            </ul>
+          </nav>
+      </div>                
+        <!-- event list end -->            
+    </div>
+           
+    <div class="card p-3">
+      <h4>Chart</h4>
+      <div id="radial_card"></div>
+    </div>
+    <!-- End home content -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        // Function to fetch data and render the chart
+        function fetchChartData() {
+          fetch('/patient/radial_chart/')
+            .then(response => response.json())
+            .then(data => {
+              var options = {
+                
+  series: data.radial_data,
+  chart: {
+    height: 390,
+    type: "radialBar",
+  },
+  plotOptions: {
+    radialBar: {
+      offsetY: 0,
+      startAngle: 0,
+      endAngle: 270,
+      hollow: {
+        margin: 5,
+        size: "30%",
+        background: "transparent",
+        image: undefined,
+      },
+      dataLabels: {
+        name: {
+          show: false,
+        },
+        value: {
+          show: false,
+        },
+      },
+      barLabels: {
+        enabled: true,
+        useSeriesColors: true,
+        margin: 8,
+        fontSize: "16px",
+        formatter: function (seriesName, opts) {
+          return seriesName + ":  " + opts.w.globals.series[opts.seriesIndex];
+        },
+      },
+    },
+  },
+  colors: ["#1ab7ea", "#0084ff"],
+  labels: ["Psychiatrist", 'Psychologist'],
+  responsive: [
+    {
+      breakpoint: 480,
+      options: {
+        legend: {
+          show: false,
+        },
+      },
+    },
+  ],
+              };
+      
+              var chart = new ApexCharts(document.querySelector("#radial_card"), options);
+              chart.render();
+            });
+        }
+      
+        // Call the function to fetch data and render the chart
+        fetchChartData();
+      });
+      </script>
+
+{% endblock %}

@@ -1,0 +1,80 @@
+{% extends 'patient/base_app.html '%} {% block content %} {% load static %}
+
+<!-- Home Section -->
+<div class="main-content" style="min-height: 100vh">
+  <!-- Start home content -->
+  <div class="card shadow p-3 text-center">
+    <h2 class="p-2">Prescription Card</h2>
+    <div class="container text-start">
+      <div class="row">
+        <div class="col"></div>
+        <div class="col-6 text-end">
+          <span>Date : {{pres.5}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="container text-start">
+      <div class="row">
+        <div class="col">
+          <span>Patient name : {{patient.1}} {{patient.2}}</span>
+        </div>
+        <div class="col text-end">
+          <span>Age : {{age}}y</span>
+        </div>
+      </div>
+    </div>
+    <div class="container text-start">
+      <div class="row">
+        <div class="col">
+          <span>Specialist name : {{spe.1}} {{spe.2}}</span>
+        </div>
+        <div class="col text-end">
+          <span>Type : {% if spe.3 == 2%}Psychiatrist{% elif spe.3 == 3 %}Psychologist{% endif %}</span>
+        </div>
+      </div>
+    </div>
+    <div class="container text-start my-2">
+      <div class="row">
+        <div class="col">
+            <h4>Tests</h4>
+            <div>
+            {% for t in test %}
+                <p>{{t}}</p>
+            {% endfor %}
+            </div>
+        </div>
+        <div class="col text-end">
+            <h4>Medicine</h4>
+            <div>
+            {% for m in medicine %}
+                <p>{{m}}</p>
+            {% endfor %}
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="container text-start">
+      <h4>Advice</h4>
+      <div>
+        {% for a in advice %}
+            <p>{{a}}</p>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="text-end my-2">
+        <div class="row">
+            <div class="col">
+                <button class="butn">Download</button>
+            </div>
+            {% if user.1 == 1 %}
+            <div class="col">
+              <a href="{% url "diagnosis:make_appointment" pres.0 %}">
+                <button class="butn">Report</button></a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+  </div>
+  <!-- End home content -->
+
+  {% endblock %}
