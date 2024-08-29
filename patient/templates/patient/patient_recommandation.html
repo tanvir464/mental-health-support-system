@@ -1,0 +1,38 @@
+{% extends "patient/base_app.html" %} {% block content %}
+
+<div class="card m-1 p-2 shadow gx-3 border-0">
+
+  <h1>Chat with GPT-3.5</h1>
+    <form id="chat-form">
+        <label for="user_input">Your message:</label>
+        <input type="text" id="user_input" name="user_input" required>
+        <button type="submit">Send</button>
+    </form>
+    <div id="response"></div>
+
+    <script>
+        $(document).ready(function() {
+            $('#chat-form').on('submit', function(event) {
+                event.preventDefault();
+                var user_input = $('#user_input').val();
+                $.ajax({
+                    type: 'POST',
+                    url: '',
+                    data: {
+                        'user_input': user_input,
+                        'csrfmiddlewaretoken': '{{ csrf_token }}'
+                    },
+                    success: function(response) {
+                        $('#response').html(response.choices[0].message.content);
+                    },
+                    error: function(xhr, status, error) {
+                        $('#response').html('Error: ' + error);
+                    }
+                });
+            });
+        });
+    </script>
+
+</div>
+
+{% endblock %}

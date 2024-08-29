@@ -1,0 +1,120 @@
+{% extends "patient/base_app.html" %} {% block content %}
+
+<!-- Home Section -->
+<div class="main-content" style="min-height: 100vh">
+  <!-- Start home content -->
+  <div class="card p-3 shadow">
+    <h2 class="text-center">Appointment</h2>
+    <form method="post" action="" >
+      {% csrf_token %}
+    <!-- Appointment input start -->    
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label"
+              >Specialist Name</label
+            >
+            <div class="input-group">
+              <select
+                class="form-select form-select-sm"
+                aria-label="Small select example"
+                name="specialistNameId"
+              >
+              {% for d in data %}
+                <option value="{{d.0}}">{{d.1}} {{d.2}}
+                                        {% if d.15 == 2 %}(Psychiatrist)
+                                        {% elif d.15 == 3 %}(Psychologist){% endif %}
+                </option>
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label"
+              >Type</label
+            >
+            <div class="input-group">
+              <select
+                class="form-select form-select-sm"
+                aria-label="Small select example"
+                name="specialistType"
+              >
+                <option selected>Select</option>
+                <option value="1">Psychiatrist</option>
+                <option value="2">Psychologist</option>
+              </select>
+            </div>
+          </div>
+        </div>        
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label"
+              >Date</label
+            >
+            <input
+              type="date"
+              class="form-control"
+              id="exampleFormControlInput1"
+              placeholder="+880*********"
+              name="date"
+            />
+          </div>
+        </div>
+        <div class="col">
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label"
+              >Time</label
+            >
+            <div class="input-group">
+              <select
+                class="form-select form-select-sm"
+                aria-label="Small select example"
+                name="time"
+              >
+                <option selected>Select</option>
+                <option value="Time 1">Time 1</option>
+                <option value="Time 2">Time 2</option>
+              </select>
+            </div>
+          </div>
+        </div>        
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label"
+              >Appointment fee</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="exampleFormControlInput1"
+              value="0000tk"              
+              disabled
+            />
+          </div>
+        </div>
+        <button
+          type="submit"
+          class="btn btn-success position-absoulet bottom-0"
+        >
+          Appointment
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- Appointment input end -->
+</form>
+</div>
+<!-- End home content -->
+
+{% endblock %}

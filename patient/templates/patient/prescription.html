@@ -1,0 +1,82 @@
+{% extends 'patient/base_app.html '%} {% block content %} {% load static %}
+
+<!-- Home Section -->
+<div class="main-content" style="min-height: 100vh">
+  <!-- Start home content -->
+  <form action="" method="post">
+    {% csrf_token %}
+  <div class="card shadow p-3 text-center">
+    <h4 class="p-2">Prescription</h4>
+    <div class="container text-start">
+      <div class="row">
+        <div class="col"></div>
+        <div class="col-6">
+          <span>Date : {{today}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="container text-start">
+      <div class="row">
+        <div class="col">
+          <span>Patient name : {{patient.1}} {{patient.2}}</span>
+        </div>
+        <div class="col">
+          <span>Age : </span>        
+        </div>
+      </div>
+    </div>
+    <div class="container text-start">
+      <div class="row">
+        <div class="col">
+          <span>Specialist name : {{specialist.1}} {{specialist.2}}</span>
+        </div>
+        <div class="col">
+          <span>Type : {% if specialist.5 == 2%}Psychiatrist{% elif specialist.5 == 3 %}Psychologist{% endif %}</span>
+        </div>
+      </div>
+    </div>
+    <div class="container text-start">
+      <span>Tests</span>
+      <div>
+        <textarea
+          name="test"
+          id=""
+          rows="5"
+          placeholder="Write test here"
+          style="width: 100%"
+        ></textarea>
+      </div>
+    </div>
+    <div class="container text-start">
+      <span>Medicine</span>
+      <div>
+        <textarea
+          name="medicine"
+          id=""
+          rows="5"
+          placeholder="Write medicines here"
+          style="width: 100%"          
+        ></textarea>
+      </div>
+    </div>
+    <div class="container text-start">
+      <span>Advice</span>
+      <div>
+        <textarea
+          name="advice"
+          id=""
+          rows="5"
+          placeholder="Write advice here"
+          style="width: 100%"
+        ></textarea>
+      </div>
+    </div>
+    <div class="text-end">
+      <button class="btn btn-success" type="submit">Create Prescription</button>
+    </div>
+  </form>
+  </div>
+  <!-- End home content -->
+
+  {% endblock %}
+</div>

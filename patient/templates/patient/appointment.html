@@ -1,0 +1,371 @@
+{% extends "patient/base_app.html" %} {% block content %}
+{% load static %}
+  <!-- Start home content -->
+  <div class="card m-1 p-2 shadow gx-3 border-0">
+    <!-- Past appointment List -->
+    <div class="container mb-4 pt-3">
+      <div class="row">
+        <div class="col-6">
+          {% comment %} patient pending appointment db {% endcomment %}
+          <h2 class="fs-5 text-start">Pending Appointment</h2>
+        </div>
+        {% if user.1 == 1 %}
+        <div class="col-6 text-end">
+          <a href="{% url "patient:new_appointment" %}" style="color: white">
+          <button type="button" class="btn btn-success">
+            {% comment %} patient createAppointment page {% endcomment %}
+            New Appointment
+          </button>
+          </a>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+    <!-- Search input start -->
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="row g-3 justify-content-start">
+            <div class="col-auto">
+              <label for="search" class="col-form-label">From: </label>
+            </div>
+            <div class="col-auto">
+              <input
+                type="date"
+                id="search"
+                class="form-control d-inline-block"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <button class="btn btn-primary">Search</button>
+        </div>
+        <div class="col">
+          <div class="row g-3 justify-content-end">
+            <div class="col-auto">
+              <label for="search" class="col-form-label">To: </label>
+            </div>
+            <div class="col-auto">
+              <input
+                type="date"
+                id="search"
+                class="form-control d-inline-block"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Search input end -->
+
+    <!-- Appointment card start -->
+     {% comment %} patient appointment card db{% endcomment %}
+    <div class="table-responsive">
+      <div class="container">
+        <div class="row">          
+          {% for d in data %}
+          {% if d.5 == 1 %}
+          <div class="col-4">
+            <div class="card text-center shadow">
+              <div class="container p-2">
+                <div class="row">
+                  <div class="col">
+                    <h6 class="text-start">{{d.0}} {{d.1}}</h6>
+                    <h6 class="text-start">{% if d.2 == 2 %}Psychiartist{% elif d.2 == 3 %}Psychologist{% endif %}</h6>
+                  </div>
+                  <div class="col">
+                    <h6 class="text-end">{{d.3}}</h6>
+                    <h6 class="text-end">{{d.4}}</h6>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="btn-group mb-2"
+                role="group"
+                aria-label="Basic example"
+              ><a href="{% url "common:appointment_card" d.6 %}">
+                <button
+                  type="button"
+                  class="btn btn-outline-primary me-1 rounded"
+                >
+                  <i class="fa-solid fa-eye"></i>
+                </button></a>
+              {% if userId == "admin" %}
+                <button
+                  type="button"
+                  class="btn btn-outline-success me-1 rounded"
+                >
+                  <i class="fa-solid fa-pen-to-square"></i>
+                </button>
+                <button type="button" class="btn btn-outline-danger rounded">
+                  <i class="fa-solid fa-trash-can"></i>
+                </button>
+              {% endif %}
+              </div>
+            </div>
+          </div>
+          {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+      <!-- Appointment card end -->
+      <!-- Page nav start -->
+      <nav aria-label="...">
+        <ul class="pagination justify-content-center">
+          <li class="page-item disabled">
+            <a class="page-link" href="#" tabindex="-1" aria-disabled="true"
+              >Previous</a
+            >
+          </li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item active" aria-current="page">
+            <a class="page-link" href="#">2</a>
+          </li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item">
+            <a class="page-link" href="#">Next</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <!-- Page nav end -->
+  <div class="card m-1 p-2 shadow gx-3 border-0">
+    <!-- Past appointment List -->
+    <div class="container mb-4 pt-3">
+      <div class="row">
+        <div class="col-6">
+          <h2 class="fs-5 text-start">Past Appointment</h2>
+        </div>
+        {% if userId.1 == 1 %}
+        <div class="col-6 text-end">
+          <a href="{% url "patient:new_appointment" %}" style="color: white">
+          <button type="button" class="btn btn-success">
+            New Appointment
+          </button>
+          </a>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+    <!-- Search input start -->
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="row g-3 justify-content-start">
+            <div class="col-auto">
+              <label for="search" class="col-form-label">From: </label>
+            </div>
+            <div class="col-auto">
+              <input
+                type="date"
+                id="search"
+                class="form-control d-inline-block"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <button class="btn btn-primary">Search</button>
+        </div>
+        <div class="col">
+          <div class="row g-3 justify-content-end">
+            <div class="col-auto">
+              <label for="search" class="col-form-label">To: </label>
+            </div>
+            <div class="col-auto">
+              <input
+                type="date"
+                id="search"
+                class="form-control d-inline-block"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Search input end -->
+
+    <!-- Appointment card start -->
+    <div class="table-responsive">
+      <div class="container">
+        <div class="row">
+          {% for d in data %}
+          {% if d.5 == 2 %}
+          <div class="col-4">
+            <div class="card text-center shadow">
+              <div class="container p-2">
+                <div class="row">
+                  <div class="col">
+                    <h6 class="text-start">{{d.0}} {{d.1}}</h6>
+                    <h6 class="text-start">{% if d.2 == 2 %}Psychiartist{% elif d.2 == 3 %}Psychologist{% endif %}</h6>
+                  </div>
+                  <div class="col">
+                    <h6 class="text-end">{{d.3}}</h6>
+                    <h6 class="text-end">{{d.4}}</h6>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="btn-group mb-2"
+                role="group"
+                aria-label="Basic example"
+              ><a href="{% url "common:appointment_card" d.6 %}">
+                <button
+                  type="button"
+                  class="btn btn-outline-primary me-1 rounded"
+                >
+                  <i class="fa-solid fa-eye"></i>
+                </button></a>
+                <button type="button" class="btn btn-outline-danger rounded">
+                  <i class="fa-solid fa-trash-can"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          {% endif %}
+          {% endfor %}          
+        </div>
+      </div>
+      <!-- Appointment card end -->
+      <!-- Page nav start -->
+      <nav aria-label="...">
+        <ul class="pagination justify-content-center">
+          <li class="page-item disabled">
+            <a class="page-link" href="#" tabindex="-1" aria-disabled="true"
+              >Previous</a
+            >
+          </li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item active" aria-current="page">
+            <a class="page-link" href="#">2</a>
+          </li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item">
+            <a class="page-link" href="#">Next</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+  <!-- center appointment -->
+  <div class="card m-1 p-2 shadow gx-3 border-0">
+    <!-- Past appointment List -->
+    <div class="container mb-4 pt-3">
+      <div class="row">
+        <div class="col-6">
+          <h2 class="fs-5 text-start">Center Appointment</h2>
+        </div>
+      </div>
+    </div>
+    <!-- Search input start -->
+    <div class="container">
+    </div>
+    <!-- Search input end -->
+
+    <!-- Appointment card start -->
+    <div class="table-responsive">
+      <div class="container">
+        <div class="row">
+          {% for c in center %}
+          <div class="col-4">
+          <a href="{% url "diagnosis:card" c.3 %}">
+            <div class="card text-center shadow">
+              <div class="container p-2">
+                <div class="row text-start">
+                  <h5>{{c.2}}</h5>
+                </div>
+                <div class="row">
+                  <div class="col text-start">
+                    <h6>{{c.0}}</h6>
+                  </div>
+                  <div class="col text-end">
+                    <h6>{{c.1}}</h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </a>
+          </div>
+          {% endfor %}          
+        </div>
+      </div>
+      <!-- Appointment card end -->
+      <!-- Page nav start -->
+      <nav aria-label="...">
+        <ul class="pagination justify-content-center">
+          <li class="page-item disabled">
+            <a class="page-link" href="#" tabindex="-1" aria-disabled="true"
+              >Previous</a
+            >
+          </li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item active" aria-current="page">
+            <a class="page-link" href="#">2</a>
+          </li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item">
+            <a class="page-link" href="#">Next</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Page nav end -->
+  <div class="card shadow-lg">
+    <h4 class="m-3">Appointment Chart</h4>
+    <div id="appoitment_chart"></div>
+  </div>
+  <!-- End home content -->
+<!-- ChaRT -->
+ <!-- Include the necessary charting library, e.g., ApexCharts -->
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  // Function to fetch data and render the chart
+  function fetchChartData() {
+    fetch('/patient/appointment_chart/')
+      .then(response => response.json())
+      .then(data => {
+        var options = {
+          series: data.series,
+          chart: {
+            type: "bar",
+            height: 350,
+            stacked: true,
+            toolbar: { show: true },
+            zoom: { enabled: true },
+          },
+          plotOptions: {
+            bar: {
+              horizontal: false,
+              borderRadius: 10,
+              dataLabels: {
+                total: {
+                  enabled: true,
+                  style: { fontSize: "13px", fontWeight: 900 },
+                },
+              },
+            },
+          },
+          xaxis: { categories: data.categories }, // Months as x-axis categories
+          legend: { position: "right", offsetY: 40 },
+          fill: { opacity: 1 },
+        };
+
+        var chart = new ApexCharts(document.querySelector("#appoitment_chart"), options);
+        chart.render();
+      });
+  }
+
+  // Call the function to fetch data and render the chart
+  fetchChartData();
+});
+</script>
+
+
+{% endblock %}

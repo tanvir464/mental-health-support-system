@@ -1,0 +1,316 @@
+{% extends "patient/base_app.html" %} {% block content %}
+<!-- Start home content -->
+<div class="card m-1 p-2 shadow rounded">
+<form action="" method="post" id="myForm">
+        {% csrf_token %}
+    <h3 class="text-center m-3">Profile</h3>
+    <div class="container">
+        <div class="row">
+            <div class="col-8">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="mb-3">
+                          <label for="exampleFormControlInput1" class="form-label">
+                            First Name
+                          </label>
+                          <div class="input-group">
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="exampleFormControlInput1"
+                              placeholder="last name"
+                              value="{{data.1}}"
+                              name="fname"                                               
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-6">
+                        <div class="mb-3">
+                          <label for="exampleFormControlInput1" class="form-label">
+                            Last Name
+                          </label>
+                          <div class="input-group">
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="exampleFormControlInput1"
+                              placeholder="last name" 
+                              value="{{data.2}}"
+                              name="lname"                                               
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-6">
+                        <div class="mb-3">
+                          <label for="exampleFormControlInput1" class="form-label">
+                            Type
+                          </label>
+                          <div class="input-group">
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="exampleFormControlInput1"
+                              placeholder="last name" 
+                              value="Patient"
+                              readonly                                           
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-6">
+                        <div class="mb-3">
+                          <label for="exampleFormControlInput1" class="form-label">
+                            Gender
+                          </label>
+                          <div class="input-group">
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="exampleFormControlInput1"
+                              placeholder="last name" 
+                              value="{{data.3}}"
+                              readonly                                           
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-6">
+                        <div class="mb-3">
+                          <label for="exampleFormControlInput1" class="form-label">
+                            Date of Birth
+                          </label>
+                          <div class="input-group">
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="exampleFormControlInput1"
+                              placeholder="last name" 
+                              value="{{data.6}}"
+                              readonly                                           
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-6">
+                        <div class="mb-3">
+                          <label for="exampleFormControlInput1" class="form-label">
+                            Phone No
+                          </label>
+                          <div class="input-group">
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="exampleFormControlInput1"
+                              placeholder="last name" 
+                              value="{{data.4}}"
+                              readonly                                           
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-6">
+                        <div class="mb-3">
+                          <label for="exampleFormControlInput1" class="form-label">
+                            Email
+                          </label>
+                          <div class="input-group">
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="exampleFormControlInput1"
+                              placeholder="last name" 
+                              value="{{data.5}}"
+                              readonly                                           
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-6">
+                        <div class="mb-3">
+                          <label for="exampleFormControlInput1" class="form-label">
+                            Blood Group
+                          </label>
+                          <div class="input-group">
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="exampleFormControlInput1"
+                              placeholder="last name" 
+                              value="{{data.7}}"
+                              readonly                                           
+                            />
+                          </div>
+                        </div>
+                      </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" 
+                class="card-img-top"
+                alt="..."
+                style="width: 100%;">
+                <div class="mb-3">
+                    <input class="form-control signupInput" type="file" id="formFile" name="profileImg" />
+                    </div>
+            </div>            
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label">
+                    House No
+                  </label>
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="exampleFormControlInput1"
+                      placeholder="last name" 
+                      value="{{data.8}}"
+                      name="house"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label">
+                    Road No
+                  </label>
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="exampleFormControlInput1"
+                      placeholder="last name" 
+                      value="{{data.9}}"
+                      name="road"                                          
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label">
+                    Area
+                  </label>
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="exampleFormControlInput1"
+                      placeholder="last name" 
+                      value="{{data.10}}"
+                      name="area"                                          
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label">
+                    District
+                  </label>
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="exampleFormControlInput1"
+                      placeholder="last name" 
+                      value="{{data.11}}"
+                      name="district"                                         
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label">
+                    Country
+                  </label>
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="exampleFormControlInput1"
+                      placeholder="last name" 
+                      value="{{data.12}}"
+                      name="country"                                          
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label">
+                    Education
+                  </label>
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="exampleFormControlInput1"
+                      placeholder="last name" 
+                      value="{{data.18}}"
+                      name="education"                                          
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label">
+                    Employment Status
+                  </label>
+                  <div class="input-group">
+                    <select
+                    class="form-select form-select-sm"
+                    aria-label="Small select example"
+                    name="employment"
+                  >{% if data.19 == None %}
+                    <option selected>Select</option>
+                    {% else %}
+                    <option value="{{data.19}}" selected>{{data.19}}</option>
+                    {% endif %}                  
+                    <option value="Student">Student</option>
+                    <option value="Unemployee">Unemployee</option>
+                    <option value="Business">Business</option>
+                    <option value="Home Maker">Home Maker</option>
+                  </select>
+                  </div>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="mb-3">
+                  <div class="input-group">
+                    <input
+                      type="hidden"
+                      class="form-control"
+                      id="password" 
+                      name="password"
+                      readonly                                           
+                    />
+                  </div>
+                </div>
+              </div>
+        </div>
+        <button class="butn" type="submit">Change Profile Information</button>
+    </div>
+</form>
+</div>
+</div>
+
+<script>
+  document.getElementById('myForm').addEventListener('submit', function(event) {
+      event.preventDefault();      
+      var password = prompt("Please enter password to confirm:");
+      if (password !== null) {           
+          document.getElementById('password').value = password;          
+          this.submit();
+      }
+  });
+</script>
+
+{% endblock %}
