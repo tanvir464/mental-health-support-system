@@ -1,0 +1,287 @@
+{% extends "patient/base_app.html" %} {% block content %}
+
+<!-- pending appointment -->
+<div class="card m-1 p-2 shadow gx-3 border-0">
+  <!-- Patient List -->
+  <div class="container mb-4 pt-3">
+    <div class="row">
+      <div class="col-12">
+        <h2 class="fs-5 text-center">Pending Appointment</h2>
+      </div>
+    </div>
+  </div>
+  
+  <div class="table-responsive mt-3">
+    <table class="table table-hover table-bordered table-striped text-center">
+      <thead>
+        <tr>
+          <th scope="col">SID</th>
+          <th scope="col">Patient Name</th>
+          <th scope="col">Date</th>
+          <th scope="col">Time</th>  
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for d in data %}
+        {% if d.2 == 1 %}
+        <tr>
+          <td>{{d.4}}</td>
+          <td>{{d.5}} {{d.6}}</td>
+          <td>{{d.0}}</td>
+          <td>{{d.1}}</td>
+          <td>
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <a href="{% url "patient:prescription_card" d.3 %}">
+              <button
+                type="button"
+                class="btn btn-outline-primary me-1 rounded"
+              >                
+                  <i class="fa-solid fa-eye"></i
+                >
+              </button></a>
+              <button
+                type="button"
+                class="btn btn-outline-success me-1 rounded acceptbutton"
+                data-action = "{{d.7}}"
+              >
+                <i class="fa-solid fa-circle-check"></i>
+              </button>
+              <button type="button" class="btn btn-outline-danger rounded">
+                <i class="fa-solid fa-circle-xmark"></i>
+              </button>
+            </div>
+          </td>
+        </tr>
+        {% endif %}
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <nav aria-label="...">
+      <ul class="pagination justify-content-center">
+        <li class="page-item disabled">
+          <a class="page-link" href="#" tabindex="-1" aria-disabled="true"
+            >Previous</a
+          >
+        </li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item active" aria-current="page">
+          <a class="page-link" href="#">2</a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item">
+          <a class="page-link" href="#">Next</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+<!-- Past appointment -->
+<div class="card m-1 p-2 shadow gx-3 border-0">
+  <!-- Patient List -->
+  <div class="container mb-4 pt-3">
+    <div class="row">
+      <div class="col-12">
+        <h2 class="fs-5 text-center">Past Appointment</h2>
+      </div>
+    </div>
+  </div>
+  
+  <div class="table-responsive mt-3">
+    <table class="table table-hover table-bordered table-striped text-center">
+      <thead>
+        <tr>
+          <th scope="col">SID</th>
+          <th scope="col">Patient Name</th>
+          <th scope="col">Date</th>
+          <th scope="col">Time</th>  
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for d in data %}
+        {% if d.2 == 2 %}
+        <tr>
+          <td>{{d.4}}</td>
+          <td>{{d.5}} {{d.6}}</td>
+          <td>{{d.0}}</td>
+          <td>{{d.1}}</td>
+          <td>
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <button
+                type="button"
+                class="btn btn-outline-primary me-1 rounded donebutton"
+                data-action="{{d.7}}"
+              >                
+                  <i class="fa-regular fa-circle-check"></i
+                >
+              </button>
+              <a href="{% url "diagnosis:report" d.7 %}">
+              <button
+                type="button"
+                class="btn btn-outline-success me-1 rounded"
+              >
+                <i class="fa-regular fa-pen-to-square"></i>
+              </button></a>
+              <button type="button" class="btn btn-outline-danger rounded">
+                <i class="fa-regular fa-circle-xmark"></i>
+              </button>
+            </div>
+          </td>
+        </tr>
+        {% endif %}
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <nav aria-label="...">
+      <ul class="pagination justify-content-center">
+        <li class="page-item disabled">
+          <a class="page-link" href="#" tabindex="-1" aria-disabled="true"
+            >Previous</a
+          >
+        </li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item active" aria-current="page">
+          <a class="page-link" href="#">2</a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item">
+          <a class="page-link" href="#">Next</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+<!-- done report -->
+<div class="card m-1 p-2 shadow gx-3 border-0">
+  <!-- Patient List -->
+  <div class="container mb-4 pt-3">
+    <div class="row">
+      <div class="col-12">
+        <h2 class="fs-5 text-center">Done Report</h2>
+      </div>
+    </div>
+  </div>
+  
+  <div class="table-responsive mt-3">
+    <table class="table table-hover table-bordered table-striped text-center">
+      <thead>
+        <tr>
+          <th scope="col">SID</th>
+          <th scope="col">Patient Name</th>
+          <th scope="col">Date</th>
+          <th scope="col">Time</th>  
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for r in report %}        
+        <tr>
+          <td>{{r.0}}</td>
+          <td>{{r.3}} {{r.4}}</td>
+          <td>{{r.1}}</td>
+          <td>{{r.2}}</td>
+          <td>
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <a href="{% url "diagnosis:report_card" r.0 %}">
+              <button
+                type="button"
+                class="btn btn-outline-primary me-1 rounded"
+              >                
+                  <i class="fa-solid fa-eye"></i
+                >
+              </button></a>
+              <button
+                type="button"
+                class="btn btn-outline-danger me-1 rounded"
+              >                
+                  <i class="fa-solid fa-trash-can"></i
+                >
+              </button>             
+            </div>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <nav aria-label="...">
+      <ul class="pagination justify-content-center">
+        <li class="page-item disabled">
+          <a class="page-link" href="#" tabindex="-1" aria-disabled="true"
+            >Previous</a
+          >
+        </li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item active" aria-current="page">
+          <a class="page-link" href="#">2</a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item">
+          <a class="page-link" href="#">Next</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function() {
+      $('.acceptbutton').click(function() {
+          var action = $(this).data('action');
+          var c = 'acceptbutton';
+          $.ajax({
+              type: "POST",
+              url: '{% url "diagnosis:appointment" %}',
+              headers: {
+                  'X-CSRFToken' : '{{ csrf_token }}'
+              },
+              data: {
+                  'action': action,
+                  'c' : c,
+              },
+              success: function(response) {
+                  if (response.status === 'success') {
+                      alert('Appointment no.' + action + ' is accepted');
+                  }
+                  else {
+                      alert("Some error happned");
+                  }
+              }
+          });             
+      });
+  });
+//done button
+  $(document).ready(function() {
+    $('.donebutton').click(function() {
+        var action = $(this).data('action');
+        var c = 'donebutton';
+        $.ajax({
+            type: "POST",
+            url: '{% url "diagnosis:appointment" %}',
+            headers: {
+                'X-CSRFToken' : '{{ csrf_token }}'
+            },
+            data: {
+                'action': action,
+                'c' : c,
+            },
+            success: function(response) {
+                if (response.status === 'success') {
+                    alert('Report for Appointment no.' + action + ' is done.');
+                }
+                else {
+                    alert("Some error happned");
+                }
+            }
+        });             
+    });
+});
+</script>
+
+{% endblock %}

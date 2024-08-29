@@ -1,0 +1,81 @@
+{% extends 'patient/base_app.html '%} {% block content %} {% load static %}
+
+<!-- Home Section -->
+<div class="main-content">
+  <!-- Start home content -->
+
+  <!-- Add Specialist form -->
+  <div class="card p-2 shadow">
+    <h3 class="text-center my-3">Appointment for Center</h3>
+    <form action="" method="post">
+      {% csrf_token %}
+      <div
+      class="tab-pane fade show active"
+      id="pills-home"
+      role="tabpanel"
+      aria-labelledby="pills-home-tab"
+    >
+      <!-- Home -->
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label"
+                >Diagnostic Center Name
+              </label>
+              <div class="input-group">                    
+                <select
+                class="form-select form-select-sm"
+                aria-label="Small select example"
+                name="centerId"
+              >
+              <option selected>Select</option>
+              {% for d in data %}
+                <option value="{{d.0}}">{{d.1}}</option>
+              {% endfor %}
+              </select>
+              </div>
+            </div>
+          </div>              
+          <div class="col-6">
+            <div class="mb-3">
+              <label
+                for="exampleFormControlInput1"
+                class="form-label text-start"
+                >Date</label
+              >
+              <input
+                type="date"
+                class="form-control"
+                id="exampleFormControlInput1"
+                placeholder="name@gmail.com"
+                name="date"
+              />
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label"
+                >Time</label
+              >
+              <input
+                type="time"
+                class="form-control"
+                id="exampleFormControlInput1"
+                placeholder="+880*********"
+                name="time"
+              />
+            </div>
+          </div>
+          <div class="container">
+            <button type="submit" class="butn">Create</button>
+          </div>     
+        </div>
+      </div>
+    </div>
+    </form>
+  </div>
+</div>
+<!-- End home content -->
+
+{% endblock %}
