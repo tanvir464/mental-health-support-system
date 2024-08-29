@@ -1,0 +1,49 @@
+{% extends 'patient/base_app.html '%} {% block content %} {% load static %}
+
+<div class="main-content" style="min-height: 100vh">
+  <!-- Start home content -->
+  <!-- center profile start -->
+  <div class="card p-2 shadow gx-3 border-0 rounded" style="background-color: #427558">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <h2>{{data.1}}</h2>
+          <!-- name -->                    
+           <p>{{data.2}}</p>
+          <!-- phone no -->
+          <p class="email">{{data.3}}</p>
+          <!-- email -->
+          <p>{{data.6}}/5</p>
+          <!-- dob -->
+          <address>{{data.5}}</address>
+          <!-- road no, house no -->
+        </div>
+        <div class="col text-end">
+            <!-- organization logo -->
+          <img
+            class="rounded-circle border border-2 shadow"
+            alt="Patient Photo"
+            src="https://mdbcdn.b-cdn.net/img/new/avatars/9.webp"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- center profile end -->
+
+  <div class="card p-3 shadow">
+    <h3>Test Name & Price</h3>
+  </div>
+
+
+  <div class="card p-3 shadow">
+    <h4>Chart</h4>
+    <div id="card-chart"></div>
+  </div>
+  <!-- <div class="card p-2 shadow gx-3 border-0">
+        <h3>Reviews & Ratings</h3>
+      </div>      -->
+  <!-- End home content -->
+
+  {% endblock %}
+</div>
