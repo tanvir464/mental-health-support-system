@@ -1,0 +1,62 @@
+CREATE TABLE tb_person (
+pId INT NOT NULL AUTO_INCREMENT,
+pUser VARCHAR(30) NOT NULL UNIQUE,
+pFname VARCHAR(30) NOT NULL,
+pLname VARCHAR(30) NOT NULL,
+pGender VARCHAR(8) NOT NULL,
+pContact VARCHAR(15) NOT NULL UNIQUE,
+pEmail VARCHAR(50) NOT NULL UNIQUE,
+pDOB DATE NOT NULL,
+pHouse VARCHAR(10),
+pRoad VARCHAR(10),
+pArea VARCHAR(20) NOT NULL,
+pDistrict VARCHAR(20) NOT NULL,
+PRIMARY KEY(pId)
+);
+
+CREATE TABLE tb_patient (
+ppId INT NOT NULL AUTO_INCREMENT,
+ppEducation VARCHAR(50),
+ppEmployment VARCHAR(30),
+CONSTRAINT FOREIGN KEY(ppId) REFERENCES tb_person(pid),
+PRIMARY KEY(ppId)
+);
+
+CREATE TABLE tb_psychiatrist (
+psyId INT NOT NULL AUTO_INCREMENT,
+psyExpertise VARCHAR(20) NOT NULL,
+psyLicence VARCHAR(20),
+psySpeciality VARCHAR(20) NOT NULL,
+personId INT,
+PRIMARY KEY(psyId),
+FOREIGN KEY(personId) REFERENCES tb_person(pId)
+);
+
+CREATE TABLE tb_organization(
+orgId INT AUTO_INCREMENT NOT NULL,
+orgName VARCHAR(255) NOT NULL,
+orgContact VARCHAR(20) NOT NULL UNIQUE,
+orgEmail VARCHAR(100) NOT NULL UNIQUE,
+orgAddress VARCHAR(255),
+orgDate DATE,
+orgType INT,
+orgPassword VARCHAR(50) NOT NULL,
+orgPhoto BLOB,
+orgStatus INT DEFAULT 1,
+PRIMARY KEY(orgId)
+);
+
+CREATE TABLE tb_event(
+eId INT AUTO_INCREMENT NOT NULL,
+eOrgId INT NOT NULL,
+eTopic VARCHAR(255) NOT NULL,
+eType INT NOT NULL,
+eMode INT NOT NULL,
+eDate Date,
+etTime Time,
+eLocation VARCHAR(255),
+eDescription VARCHAR(500),
+eStatus INT DEFAULT 1,
+PRIMARY KEY(eId),
+FOREIGN KEY(eOrgId) REFERENCES tb_organization(orgId)
+);

@@ -1,0 +1,86 @@
+{% extends 'patient/base_app.html '%} {% block content %}
+
+<!-- Home Section -->
+<div class="" style="min-height: 100vh">
+  <!-- Start home content -->
+  <form method="post" action="">
+    {% csrf_token %}
+  <div class="card shadow-lg">
+    <div class="container">
+      <div class="row">
+        <div class="col text-center mt-3">
+          <h2>Resources & Tools</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col mt-3">
+          <h4>Post Title</h4>
+          <div class="input-group">                      
+            <input
+              type="text"
+              class="form-control signupInput"
+              id="exampleFormControlInput1"
+              placeholder="Title"
+              style="color:black;"
+              name="title"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col mt-3">
+          <h4>Post Type</h4>
+          <div class="input-group">                      
+            <select
+              class="form-select form-select-sm"
+              aria-label="Small select example"
+              name="type"
+            >                    
+              <option value="Book">Book</option>
+              <option value="PDF">PDF</option>
+              <option value="Image">Image</option>
+              <option value="Video">Video</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col text-left mt-3">
+          <h4>Write here</h4>
+        </div>
+      </div>
+      <div id="editor" style="height: 150px" class="mb-3" name="des"></div>
+        <input type="hidden" name='des' id="editor">
+      
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <div class="card" style="width: 18rem">
+              <p>Upload resources here</p>
+              <img
+                src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+                class="card-img-top"
+                alt="..."                
+              />
+              <div class="mb-3">
+                <input class="form-control" type="file" id="formFile" name="file"/>
+              </div>
+            </div>
+          </div>
+          <div class="col"></div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col text-end p-3">
+          <button type="submit" class="btn btn-success">Submit</button>
+        </div>
+      </div>
+    </div>
+  {% comment %} </div> {% endcomment %}
+  </form>
+  <!-- End home content -->
+
+  {% endblock %}
+</div>

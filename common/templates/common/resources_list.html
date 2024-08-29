@@ -1,0 +1,66 @@
+{% extends 'patient/base_app.html '%} {% block content %}
+{% load static %}
+
+<!-- Home Section -->
+<div class="" style="min-height: 100vh">
+  <div class="card shadow">
+    <div class="container p-3">
+      <div class="row">
+        <div class="col fs-3">Resources & Tools</div>
+        <div class="col text-end">
+          {% if user.1 != 1 %}
+          <a href="{% url "common:resource_new" %}" style="color: white">
+            <button type="button" class="btn btn-success">Add post</button>
+          </a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        {% for d in data %}
+        <div class="col-3">
+          <a href="{% url "common:resource_card" d.0 %}">
+            <div class="card shadow">
+              <img
+                src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+                class="card-img-top"
+                alt="..."
+                style="width: 100%;"
+              />
+              <div class="card-body">
+                <h5 class="card-title">{{d.2}}</h5>
+                <p class="card-text">{{d.5}} {{d.6}}</p>
+                <div class="row">
+                  <p class="col text-start">{{d.3}}</p>
+                  <p class="col-8 text-end">{{d.4}}</p>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+        {% endfor %}
+      </div>
+    </div>    
+    <nav aria-label="...">
+      <ul class="pagination justify-content-center pb-2">
+        <li class="page-item disabled">
+          <a class="page-link" href="#" tabindex="-1" aria-disabled="true"
+            >Previous</a
+          >
+        </li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item active" aria-current="page">
+          <a class="page-link" href="#">2</a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item">
+          <a class="page-link" href="#">Next</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
+<!-- End home content -->
+
+{% endblock %}

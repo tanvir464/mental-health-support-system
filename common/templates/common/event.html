@@ -1,0 +1,173 @@
+{% extends 'patient/base_app.html '%} {% block content %} {% load static %}
+
+<!-- Home Section -->
+<div class="main-content">
+  <!-- Start home content -->
+  <div class="card m-1 p-2 shadow rounded">
+    <!-- event list start -->
+    <div class="table-responsive mt-3">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <h3>Event Pending</h3>
+          </div>
+          <div class="col text-end">
+            <a href="{% url "common:event" %}">Explore new event -></a>            
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          {% for d in data %}
+          {% if d.11 == 1 %}
+          <div class="col-6">
+            <a href="{% url "organization:event_card" d.2 %}">
+              <div class="card shadow p-3 border border-2">
+                <div class="row">
+                  <h5>{{d.3}}</h5>
+                  <div class="col">
+                    <p>
+                      {% if d.4 == 1 %}
+                        Workshop
+                      {% elif d.4 == 2 %}
+                        Seminar
+                      {% endif %}
+                    </p>
+                    <p>
+                      {% if d.5 == 1 %}
+                        Online
+                      {% elif d.5 == 2 %}
+                        Physical
+                      {% endif %}
+                    </p>
+                    <p>{{d.9}}</p>
+                  </div>
+                  <div class="col text-end">
+                    <p>{{d.6}}</p>
+                    <p>{{d.7}}</p>
+                    <p>{{d.8}}hr</p>
+                  </div>
+                  <p class="mt-2" style="text-align: justify">
+                    {{d.10}}
+                  </p>
+                </div>
+              </div>
+            </a>
+          </div>
+          {% endif %}
+          {% endfor %}        
+      </div>
+    </div>
+    <!-- event list end -->
+    <!-- event nav start -->
+    <nav aria-label="...">
+      <ul class="pagination justify-content-center">
+        <li class="page-item disabled">
+          <a class="page-link" href="#" tabindex="-1" aria-disabled="true"
+            >Previous</a
+          >
+        </li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item active" aria-current="page">
+          <a class="page-link" href="#">2</a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item">
+          <a class="page-link" href="#">Next</a>
+        </li>
+      </ul>
+    </nav>
+    <!-- event nav end -->
+     {% if user.1 != 1 %}
+     <div class="col text-end pe-3">
+        <a href="{% url "common:request_event" %}">Requested event -></a>
+    </div>
+    {% endif %}
+  </div>
+</div>
+  <!-- past event list start -->
+  <div class="card m-1 p-2 shadow rounded">
+    <!-- event list start -->
+    <div class="table-responsive mt-3">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <h3>Past Event</h3>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          {% for d in data %}
+          {% if d.11 == 2 %}
+          <div class="col-6">
+            <a href="{% url "organization:event_card" d.2 %}">
+              <div class="card shadow p-3 border border-2">
+                <div class="row">
+                  <h5>{{d.3}}</h5>
+                  <div class="col">
+                    <p>
+                      {% if d.4 == 1 %}
+                        Workshop
+                      {% elif d.4 == 2 %}
+                        Seminar
+                      {% endif %}
+                    </p>
+                    <p>
+                      {% if d.5 == 1 %}
+                        Online
+                      {% elif d.5 == 2 %}
+                        Physical
+                      {% endif %}
+                    </p>
+                    <p>{{d.9}}</p>
+                  </div>
+                  <div class="col text-end">
+                    <p>{{d.6}}</p>
+                    <p>{{d.7}}</p>
+                    <p>{{d.8}}hr</p>
+                  </div>
+                  <p class="mt-2" style="text-align: justify">
+                    {{d.10}}
+                  </p>
+                </div>
+              </div>
+            </a>
+          </div>
+          {% endif %}
+          {% endfor %}        
+      </div>
+    </div>
+    <!-- event list end -->
+    <!-- event nav start -->
+    <nav aria-label="...">
+      <ul class="pagination justify-content-center">
+        <li class="page-item disabled">
+          <a class="page-link" href="#" tabindex="-1" aria-disabled="true"
+            >Previous</a
+          >
+        </li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item active" aria-current="page">
+          <a class="page-link" href="#">2</a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item">
+          <a class="page-link" href="#">Next</a>
+        </li>
+      </ul>
+    </nav>
+    <!-- event nav end -->
+  </div>
+</div>
+  <!-- past event list end -->
+  <!-- event chart start -->
+  <div class="card m-1 p-2 shadow rounded">
+    <h3>Event Chart</h3>
+    <div id="event-chart"></div>
+  </div>
+  <!-- event chart end -->
+  <!-- End home content -->
+
+  {% endblock %}
+</div>

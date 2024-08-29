@@ -1,0 +1,649 @@
+{% extends 'patient/base_app.html '%} {% block content %} {% load static %}
+
+<!-- Home Section -->
+<div class="main-content">
+  <!-- Start home content -->
+
+  <!-- Add Specialist form -->
+  <div class="card p-2 shadow">
+    <form action="">
+      <!-- Nav tab -->
+      <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link active"
+            id="pills-home-tab"
+            data-bs-toggle="pill"
+            data-bs-target="#pills-home"
+            type="button"
+            role="tab"
+            aria-controls="pills-home"
+            aria-selected="true"
+          >
+            Personal Details
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link"
+            id="pills-profile-tab"
+            data-bs-toggle="pill"
+            data-bs-target="#pills-profile"
+            type="button"
+            role="tab"
+            aria-controls="pills-profile"
+            aria-selected="false"
+          >
+            Profile & Bio
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link"
+            id="pills-contact-tab"
+            data-bs-toggle="pill"
+            data-bs-target="#pills-contact"
+            type="button"
+            role="tab"
+            aria-controls="pills-contact"
+            aria-selected="false"
+          >
+            Schedule
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link"
+            id="pills-option-tab"
+            data-bs-toggle="pill"
+            data-bs-target="#pills-option"
+            type="button"
+            role="tab"
+            aria-controls="pills-option"
+            aria-selected="true"
+          >
+            Account Details
+          </button>
+        </li>
+      </ul>
+      <div class="tab-content" id="pills-tabContent" style="min-height: 620px">
+        <div
+          class="tab-pane fade show active"
+          id="pills-home"
+          role="tabpanel"
+          aria-labelledby="pills-home-tab"
+        >
+          <!-- Home -->
+          <div class="container">
+            <div class="row">
+              <div class="col-4">
+                <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label"
+                    >First Name
+                  </label>
+                  <div class="input-group">
+                    <span class="input-group-text" id="addon-wrapping">
+                      <i class="fa-solid fa-user"></i>
+                    </span>
+                    <input
+                      type="email"
+                      class="form-control"
+                      id="exampleFormControlInput1"
+                      placeholder="First Name"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label">
+                    Last Name
+                  </label>
+                  <div class="input-group">
+                    <span class="input-group-text" id="addon-wrapping">
+                      <i class="fa-solid fa-user"></i>
+                    </span>
+                    <input
+                      type="email"
+                      class="form-control"
+                      id="exampleFormControlInput1"
+                      placeholder="Last Name"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="mb-3">
+                  <label for="validationCustomUsername" class="form-label"
+                    >User Name</label
+                  >
+                  <div class="input-group has-validation">
+                    <span class="input-group-text" id="inputGroupPrepend"
+                      >@</span
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="validationCustomUsername"
+                      placeholder="user name"
+                      aria-describedby="inputGroupPrepend"
+                      required
+                    />
+                    <div class="invalid-feedback">
+                      Please choose a username.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="container">
+            <div class="row">
+              <div class="col-4">
+                <label for="exampleFormControlInput1" class="form-label d-block"
+                  >Gender</label
+                >
+
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    id="inlineCheckbox1"
+                    name="gender"
+                    value="option1"
+                  />
+                  <label class="form-check-label" for="inlineCheckbox1"
+                    >Male</label
+                  >
+                </div>
+
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    id="inlineCheckbox2"
+                    name="gender"
+                    value="option2"
+                  />
+                  <label class="form-check-label" for="inlineCheckbox2"
+                    >Female</label
+                  >
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label"
+                    >Date of Birth</label
+                  >
+                  <input
+                    type="date"
+                    class="form-control"
+                    id="exampleFormControlInput1"
+                    placeholder="last name"
+                  />
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="mb-3">
+                  <label
+                    for="exampleFormControlInput1"
+                    class="form-label text-start"
+                    >Email ID</label
+                  >
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="exampleFormControlInput1"
+                    placeholder="name@gmail.com"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="container">
+            <div class="row">
+              <div class="col-4">
+                <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label"
+                    >Mobile Number</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="exampleFormControlInput1"
+                    placeholder="+880*********"
+                  />
+                </div>
+              </div>
+
+              <div class="col-4">
+                <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label"
+                    >Marital Status</label
+                  >
+                  <div class="input-group">
+                    <span class="input-group-text" id="addon-wrapping">
+                      <i class="fa-solid fa-people-arrows"></i>
+                    </span>
+                    <select
+                      class="form-select form-select-sm"
+                      aria-label="Small select example"
+                    >
+                      <option selected>Select</option>
+                      <option value="1">Married</option>
+                      <option value="2">UnMarried</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-4">
+                <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label"
+                    >Qualification</label
+                  >
+                  <div class="input-group">
+                    <span class="input-group-text" id="addon-wrapping">
+                      <i class="fa-solid fa-medal"></i>
+                    </span>
+                    <select
+                      class="form-select form-select-sm"
+                      aria-label="Small select example"
+                    >
+                      <option selected>Select</option>
+                      <option value="1">MBBS,MD</option>
+                      <option value="2">MBBS,MS</option>
+                      <option value="3">MBBS</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="container">
+            <div class="row">
+              <div class="col-4">
+                <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label"
+                    >Blood Group</label
+                  >
+                  <div class="input-group">
+                    <span class="input-group-text" id="addon-wrapping">
+                      <i class="fa-solid fa-people-arrows"></i>
+                    </span>
+                    <select
+                      class="form-select form-select-sm"
+                      aria-label="Small select example"
+                    >
+                      <option selected>Select</option>
+                      <option value="1">A+</option>
+                      <option value="2">A-</option>
+                      <option value="3">B+</option>
+                      <option value="4">B-</option>
+                      <option value="5">O+</option>
+                      <option value="6">O-</option>
+                      <option value="7">AB+</option>
+                      <option value="8">AB-</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-4">
+                <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label"
+                    >Address</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="exampleFormControlInput1"
+                    placeholder="house no#, road no#"
+                  />
+                </div>
+              </div>
+
+              <div class="col-4">
+                <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label"
+                    >Country</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="exampleFormControlInput1"
+                    placeholder="Bangladesh"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="container">
+            <div class="row">
+              <div class="col-4">
+                <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label"
+                    >City</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="exampleFormControlInput1"
+                    placeholder="Dhaka"
+                  />
+                </div>
+              </div>
+
+              <div class="col-4">
+                <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label"
+                    >District</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="exampleFormControlInput1"
+                    placeholder="Dhaka"
+                  />
+                </div>
+              </div>
+
+              <div class="col-4">
+                <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label"
+                    >Postal Code</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="exampleFormControlInput1"
+                    placeholder="1212"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="tab-pane fade"
+          id="pills-profile"
+          role="tabpanel"
+          aria-labelledby="pills-profile-tab"
+        >
+          <div class="card" style="width: 18rem">
+            <p>Upload Image</p>
+            <img
+              src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+              class="card-img-top"
+              alt="..."
+              style="width: 200px; height: 200px"
+            />
+            <div class="mb-3">
+              <input class="form-control" type="file" id="formFile" />
+            </div>
+          </div>
+          <h4 class="my-3">Write your bio</h4>
+          <div id="editor" style="width: 100%; height: 100px" class="mb-3">
+            <h2>Write your bio here</h2>
+            <p>
+              Preset build with <code>snow</code> theme, and some common
+              formats.
+            </p>
+          </div>
+        </div>
+        <div
+          class="tab-pane fade"
+          id="pills-contact"
+          role="tabpanel"
+          aria-labelledby="pills-contact-tab"
+        >
+          <div class="container">
+            <!-- Content here -->
+            <div class="container">
+              <div class="row">
+                <div class="col my-3">
+                  Sunday
+                  <div class="input-group">
+                    <select
+                      class="form-select form-select-sm"
+                      aria-label="Large select example"
+                    >
+                      <option value="1">One</option>
+                      <option value="2">Two</option>
+                      <option value="3">Three</option>
+                    </select>
+
+                    <select
+                      class="form-select form-select-sm"
+                      aria-label="Small select example"
+                    >
+                      <option value="1">One</option>
+                      <option value="2">Two</option>
+                      <option value="3">Three</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col my-3">
+                  Monday
+                  <div class="input-group">
+                    <select
+                      class="form-select form-select-sm"
+                      aria-label="Large select example"
+                    >
+                      <option value="1">One</option>
+                      <option value="2">Two</option>
+                      <option value="3">Three</option>
+                    </select>
+
+                    <select
+                      class="form-select form-select-sm"
+                      aria-label="Small select example"
+                    >
+                      <option value="1">One</option>
+                      <option value="2">Two</option>
+                      <option value="3">Three</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col my-3">
+                  Tuesday
+                  <div class="input-group">
+                    <select
+                      class="form-select form-select-sm"
+                      aria-label="Large select example"
+                    >
+                      <option value="1">One</option>
+                      <option value="2">Two</option>
+                      <option value="3">Three</option>
+                    </select>
+
+                    <select
+                      class="form-select form-select-sm"
+                      aria-label="Small select example"
+                    >
+                      <option value="1">One</option>
+                      <option value="2">Two</option>
+                      <option value="3">Three</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="container">
+              <div class="row">
+                <div class="col">
+                  Wednesday
+                  <div class="input-group">
+                    <select
+                      class="form-select form-select-sm"
+                      aria-label="Large select example"
+                    >
+                      <option value="1">One</option>
+                      <option value="2">Two</option>
+                      <option value="3">Three</option>
+                    </select>
+
+                    <select
+                      class="form-select form-select-sm"
+                      aria-label="Small select example"
+                    >
+                      <option value="1">One</option>
+                      <option value="2">Two</option>
+                      <option value="3">Three</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col">
+                  Thursday
+                  <div class="input-group">
+                    <select
+                      class="form-select form-select-sm"
+                      aria-label="Large select example"
+                    >
+                      <option value="1">One</option>
+                      <option value="2">Two</option>
+                      <option value="3">Three</option>
+                    </select>
+
+                    <select
+                      class="form-select form-select-sm"
+                      aria-label="Small select example"
+                    >
+                      <option value="1">One</option>
+                      <option value="2">Two</option>
+                      <option value="3">Three</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col">
+                  Friday
+                  <div class="input-group">
+                    <select
+                      class="form-select form-select-sm"
+                      aria-label="Large select example"
+                    >
+                      <option value="1">One</option>
+                      <option value="2">Two</option>
+                      <option value="3">Three</option>
+                    </select>
+
+                    <select
+                      class="form-select form-select-sm"
+                      aria-label="Small select example"
+                    >
+                      <option value="1">One</option>
+                      <option value="2">Two</option>
+                      <option value="3">Three</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="container">
+              <div class="row">
+                <div class="col-4 my-3">
+                  Saturday
+                  <div class="input-group">
+                    <select
+                      class="form-select form-select-sm"
+                      aria-label="Large select example"
+                    >
+                      <option value="1">One</option>
+                      <option value="2">Two</option>
+                      <option value="3">Three</option>
+                    </select>
+
+                    <select
+                      class="form-select form-select-sm"
+                      aria-label="Small select example"
+                    >
+                      <option value="1">One</option>
+                      <option value="2">Two</option>
+                      <option value="3">Three</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="tab-pane fade"
+          id="pills-option"
+          role="tabpanel"
+          aria-labelledby="pills-option-tab"
+        >
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label">
+                    User Name
+                  </label>
+                  <div class="input-group">
+                    <span class="input-group-text" id="addon-wrapping">
+                      <i class="fa-solid fa-user"></i>
+                    </span>
+                    <input
+                      type="email"
+                      class="form-control"
+                      id="exampleFormControlInput1"
+                      placeholder="user Name"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label">
+                    Password
+                  </label>
+                  <div class="input-group">
+                    <span class="input-group-text" id="addon-wrapping">
+                      <i class="fa-solid fa-user"></i>
+                    </span>
+                    <input
+                      type="password"
+                      class="form-control"
+                      id="exampleFormControlInput1"
+                      placeholder="password"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label">
+                    Confirm Password
+                  </label>
+                  <div class="input-group">
+                    <span class="input-group-text" id="addon-wrapping">
+                      <i class="fa-solid fa-user"></i>
+                    </span>
+                    <input
+                      type="password"
+                      class="form-control"
+                      id="exampleFormControlInput1"
+                      placeholder="confirm password"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12">
+        <button
+          class="btn btn-primary position-absolute bottom-0 end-0 m-3"
+          type="submit"
+        >
+          Create Account
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+<!-- End home content -->
+
+{% endblock %}
