@@ -1,0 +1,310 @@
+{% extends 'patient/base_app.html '%} {% block content %} {% load static %}
+
+<!-- Home Section -->
+  <!-- Start home content -->
+  <div class="card p-2 shadow gx-3 border-0">
+    <div class="container">
+      <div class="row">
+        <h2>{{data.1}}</h2>
+        <div class="col">
+          <h3>
+            {% if data.2 == 1 %}
+              Workshop
+            {% elif data.2 == 2 %} 
+              Seminar
+            {% endif %}
+          </h3>
+          <h5>
+            {% if data.3 == 1 %}
+              Online
+            {% elif data.3 == 2 %}
+              Physical
+            {% endif %}
+          </h5>
+          <h5>Rating 4.7/5</h5>
+          <h5>*****</h5>
+          <p>Date : {{data.4}}</p>
+          <p>Time : {{data.5}}</p>
+          <p>Duration : {{data.6}}hr</p>
+          <address>Location : {{data.7}}</address>          
+          <h5>Total Participant</h5>
+        </div>
+        <div class="col text-end">
+          <h4>Organized By</h4>
+          <h5>{{org.0}}</h5>
+          <p>
+            {% if org.1 == 1 %}
+              Non-governmental Organization(NGO)
+            {% elif org.1 == 2 %}
+              Non-profit Organization(NPO)
+            {% elif org.1 == 3 %}
+              Government Organization
+            {% endif %}
+          </p>
+          <p>
+            {% if data.9 == 1 %}
+              Pending
+            {% elif data.9 == 2 %}
+              Done
+            {% elif data.9 == 0 %}
+              Canceled
+            {% endif %}
+          </p>
+          {% if data.2 == 1 %}
+            <p>{{event.0}} : Activities</p>
+            <p>{{event.1}} : Follow Up</p>
+            <p>{{event.2}} : Prerequisite</p>
+            <p><a href="" download="">{{event.3}}</a> : Material</p>
+            <p>{{fac.1}} {{fac.2}}({% if fac.3 == 2 %}Psychiatrist{% elif fac.3 == 3 %}Psychologist{% endif %}) : Facilitator</p>
+          {% endif %}
+        </div>
+        <!-- event description -->
+        <h6 style="text-align: justify">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint fugit,
+          dolor odit necessitatibus maxime hic fuga cum a corrupti, rerum earum
+          expedita cumque placeat iure dolores harum ipsam sed inventore,
+          perferendis modi ex labore accusantium doloribus mollitia! In libero
+          distinctio, magnam accusantium veniam ducimus consectetur eum maiores
+          commodi illum id. Maxime possimus iure facere quaerat, incidunt eaque
+          inventore asperiores consequatur quos explicabo architecto, aliquam
+          tenetur dicta, fugit repudiandae voluptates illo. Quod error at nemo
+          est, dolor ipsam, nam odio reiciendis id, a culpa ex molestiae
+          delectus recusandae eligendi eos mollitia deserunt. Sint ratione
+          architecto impedit deleniti praesentium eveniet quidem ducimus.
+        </h6>        
+      </div>
+      {% if user.1 == 1 and parStatus == False %}
+        <button class="butn participate" data-action = "{{data.0}}">Participate</button>
+      {% elif user.1 == 1 and parStatus == True %}
+        <button class="butn" onclick="participant()">Participated</button>
+      {% endif %}
+    </div>    
+  </div>
+  {% if user.2 != "person" %}
+  <div class="card p-3 shadow gx-3 border-0">
+    <h4>Participant</h4>
+    <div class="table-responsive mt-3">
+        <table class="table table-hover table-bordered table-striped text-center">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Participant Name</th>
+              <th scope="col">Phone No</th>
+              <th scope="col">Email</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for e in epar %}
+            <tr>
+              <td scope="row">{{e.0}}</td>
+              <td>{{e.1}} {{e.2}}</td>
+              <td>{{e.3}}</td>
+              <td class="email">{{e.4}}</td>
+              <td>
+                <div class="btn-group" role="group" aria-label="Basic example">
+                <a href="{% url "patient:card" e.0 %}">
+                  <button type="button" class="btn btn-outline-primary me-1 rounded">                            
+                      <i class="fa-solid fa-eye"></i>
+                  </button></a>
+                  {% if e.5 == 1 %}
+                  <button type="button" class="btn btn-success me-1 rounded">
+                    <i class="fa-regular fa-circle-check"></i>
+                  </button>
+                  {% else %}
+                  <button type="button" class="btn btn-outline-success me-1 rounded acceptbutton" data-action = "{{e.0}}">
+                    <i class="fa-regular fa-circle-check"></i>
+                  </button>
+                  {% endif %}
+                  {% if e.5 == 0 %}
+                  <button type="button" class="btn btn-danger rounded">
+                      <i class="fa-regular fa-circle-xmark"></i>
+                  </button>
+                  {% else %}
+                  <button type="button" class="btn btn-outline-danger rounded rejectbutton" data-action = "{{e.0}}">
+                    <i class="fa-regular fa-circle-xmark"></i>
+                  </button>
+                  {% endif %}
+                </div>                
+              </td>
+            </tr>
+            {% endfor %}     
+          </tbody>
+        </table>
+        <nav aria-label="...">
+          <ul class="pagination justify-content-center">
+            <li class="page-item disabled">
+              <a
+                class="page-link"
+                href="#"
+                tabindex="-1"
+                aria-disabled="true"
+                >Previous</a
+              >
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item active" aria-current="page">
+              <a class="page-link" href="#">2</a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+              <a class="page-link" href="#">Next</a>
+            </li>
+          </ul>
+        </nav>
+    </div>                
+  </div>
+  {% endif %}
+  {% if data.2 == 2 %}
+  <div class="card p-3 shadow gx-3 border-0">
+    <h4>Speaker</h4>
+    <div class="table-responsive mt-3">
+        <table class="table table-hover table-bordered table-striped text-center">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Speaker Name</th>
+              <th scope="col">Phone No</th>
+              <th scope="col">Email</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for f in fac %}
+            <tr>
+              <td scope="row">{{f.0}}</td>
+              <td>{{f.1}} {{f.2}}
+                ({% if f.5 == 2 %}Psychiatrist{% elif f.5 == 3 %}Psychologist{% endif %})
+              </td>
+              <td>{{f.3}}</td>
+              <td class="email">{{f.4}}</td>
+              <td>
+                <div class="btn-group" role="group" aria-label="Basic example">
+                  {% if f.5 == 2 %}
+                    <a href="{% url "psychiatrist:card" f.0 %}">
+                  {% elif f.5 == 3 %}
+                    <a href="{% url "psychologist:card" f.0 %}">
+                  {% endif %}
+                  <button type="button" class="btn btn-outline-primary me-1 rounded">                            
+                      <i class="fa-solid fa-eye"></i>
+                  </button></a>                                            
+                </div>                
+              </td>
+            </tr>  
+            {% endfor %}      
+          </tbody>
+        </table>
+        <nav aria-label="...">
+          <ul class="pagination justify-content-center">
+            <li class="page-item disabled">
+              <a
+                class="page-link"
+                href="#"
+                tabindex="-1"
+                aria-disabled="true"
+                >Previous</a
+              >
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item active" aria-current="page">
+              <a class="page-link" href="#">2</a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+              <a class="page-link" href="#">Next</a>
+            </li>
+          </ul>
+        </nav>
+    </div>                
+  </div>
+  {% endif %}
+  <!-- End home content -->
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  {% comment %} participate {% endcomment %}
+  $(document).ready(function() {
+      $('.participate').click(function() {
+          var action = $(this).data('action');
+          var c = 'participate';
+          $.ajax({
+              type: "POST",
+              url: '{% url "organization:event_card" data.0 %}',
+              headers: {
+                  'X-CSRFToken' : '{{ csrf_token }}'
+              },
+              data: {
+                  'action': action,
+                  'c' : c,
+              },
+              success: function(response) {
+                  if (response.status === 'success') {
+                      alert('You have participate');
+                  }
+                  else {
+                      alert("Some error happned");
+                  }
+              }
+          });             
+      });
+  });
+  {% comment %} accepte {% endcomment %}
+  $(document).ready(function() {
+    $('.acceptbutton').click(function() {
+        var action = $(this).data('action');
+        var c = 'acceptbutton';
+        $.ajax({
+            type: "POST",
+            url: '{% url "organization:event_card" data.0 %}',
+            headers: {
+                'X-CSRFToken' : '{{ csrf_token }}'
+            },
+            data: {
+                'action': action,
+                'c' : c,
+            },
+            success: function(response) {
+                if (response.status === 'success') {
+                    alert('Person accepted as participant');
+                }
+                else {
+                    alert("Some error happned");
+                }
+            }
+        });             
+    });
+  });
+  {% comment %} reject {% endcomment %}
+  $(document).ready(function() {
+    $('.rejectbutton').click(function() {
+        var action = $(this).data('action');
+        var c = 'rejectbutton';
+        $.ajax({
+          type: "POST",
+          url: '{% url "organization:event_card" data.0 %}',
+          headers: {
+              'X-CSRFToken' : '{{ csrf_token }}'
+          },
+          data: {
+              'action': action,
+              'c' : c,
+          },
+          success: function(response) {
+              if (response.status === 'success') {
+                  alert('Person rejected as participant');
+              }
+              else {
+                  alert("Some error happned");
+              }
+          }
+      });             
+    });
+  });
+  {% comment %} Participated {% endcomment %}
+  function participant() {
+    alert('You already been participated');
+  }
+</script>
+
+  {% endblock %}
+</div>

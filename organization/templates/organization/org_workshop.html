@@ -1,0 +1,227 @@
+{% extends 'patient/base_app.html '%} {% block content %}
+
+<!-- Start home content -->
+<div class="card shadow">
+  <h3 class="text-center p-3">Workshop</h3>
+  <form action="{% url "organization:workshop" data.0 %}" method="post">
+    {% csrf_token %}
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Topic</label>
+          <input
+            type="text"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="topic"
+            value="{{data.1}}"
+            name="topic"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Type</label>
+          <div class="input-group">
+            <input
+            type="text"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="topic"
+            value="Workshop"
+            readonly
+          />
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Mode</label>
+          <div class="input-group">
+            <select
+              class="form-select form-select-sm"
+              aria-label="Small select example"
+              name="mode"
+            >
+            {% if data.3 == 1 %}
+              <option value="1" selected>Online</option>
+              <option value="2">Physical</option>
+            {% elif data.3 == 2 %}
+              <option value="1">Online</option>
+              <option value="2" selected>Physical</option>
+            {% endif %}
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label"
+            >Duration(hr)</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="duration"
+            value="{{data.6}}"
+            name="duration"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Date</label>
+          <input
+            type="date"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="date"
+            value="{{data.4}}"
+            name="date"
+          />
+        </div>
+      </div>
+      <div class="col">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Time</label>
+          <input
+            type="time"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="time"
+            value="{{data.5}}"
+            name="time"
+          />
+        </div>
+      </div>
+      <div class="col">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label"
+            >Location</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="house no, plot no, road no, area, district, division"
+            value="{{data.8}}"
+            name="address"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Activities</label>
+          <input
+            type="text"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="activities"
+            value="{{data.9}}"
+            name="activity"
+          />
+        </div>
+      </div>
+      <div class="col">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Follow up</label>
+          <input
+            type="text"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="follow up"
+            value="{{data.10}}"
+            name="follow"
+          />
+        </div>
+      </div>
+      <div class="col">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Prerequisite</label>
+          <input
+            type="text"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="prerequisite"
+            value="{{data.11}}"
+            name="prerequisite"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Material</label>
+          <input
+            type="file"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="file"
+            value="{{data.12}}"
+            name="file"
+          />
+        </div>
+      </div>
+      <div class="col">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Facilitator</label>
+          <div class="input-group">
+            <select
+              class="form-select form-select-sm"
+              aria-label="Small select example"
+              name="facilitator"
+              value="Hi"
+            >
+              {% if faci != None %}
+                <option value={{faci.0}} selected>{{faci.1}} {{faci.2}}(
+                {% if faci.3 == 2 %}Psychiatrist
+                {% elif faci.3 == 3 %}Psychologist
+                {% endif %}
+                )</option>
+              {% else %}
+                <option selected>Select</option>
+              {% endif %}
+            {% for f in fac %}              
+              <option value={{f.0}}>{{f.1}} {{f.2}}(
+                {% if f.3 == 2 %}Psychiatrist
+                {% elif f.3 == 3 %}Psychologist
+                {% endif %}
+                )</option>
+            {% endfor %}
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col m-3">
+    <div id="editor" style="height: 100px">
+      <h2>Event description</h2>
+      <p>Preset build with <code>snow</code> theme, and some common formats.</p>
+    </div>
+  </div>
+  <div class="col text-end m-3">
+    <button type="submit" class="butn">Create</button>
+  </div>
+  </form>
+</div>
+<!-- End home content -->
+
+{% endblock %}
