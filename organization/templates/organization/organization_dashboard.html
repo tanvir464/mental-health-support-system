@@ -1,0 +1,186 @@
+{% extends "patient/base_app.html" %} {% block content %}
+
+<!-- Home Section -->
+<div class="main-container" >
+    <!-- Start home content -->
+
+    <!-- Good Morning Section Start -->
+    <div class="card shadow mb-3 bg-success" style="border-radius: 5px!important;">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <div class="row mt-3">
+            {% comment %} Depand on time {% endcomment %}
+              <h3 class="m-2 text-white">Good {{wish}}</h3>
+              {% comment %} patient name db {% endcomment %}
+              <h5 class="ms-2 text-white">{{data.1}}</h5>
+              <p class="ms-2 text-white">{% if data.2 == 1 %}Non-governmental Organization(NGO){% elif data.2 == 2 %}Non-profit Organization(NPO){% elif data.2 == 3 %}Government Organization{% endif %}</p>
+              <p class="ms-2 text-white">{{data.3}}/5</p>
+            </div>
+            <div class="row ps-1 py-4 text-dark">
+              <div class="col">
+                <h4>1</h4>
+                {% comment %} patient total workshop today db {% endcomment %}
+                <p>Workshop</p>
+              </div>
+              <div class="col">
+                <h4>0</h4>
+                {% comment %} patient total seminar today db {% endcomment %}
+                <p>Seminar</p>
+              </div>
+              <div class="col text-center">
+              </div>
+            </div>
+          </div>
+          <div class="col text-end py-3">
+            {% comment %} patient img db {% endcomment %}
+            <img class="rounded-circle border border-2 shadow m-2" style="height: 180px; width: 180px;"
+              alt="avatar1" src="https://mdbcdn.b-cdn.net/img/new/avatars/9.webp" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Good Morning Section End -->
+
+    <!-- Today Section Start -->
+    <div class="d-flex flex-column align-items-center">
+      <div class="card shadow py-3">
+        <div class="container m-0">
+            {% comment %} doctor info from patient appointment db {% endcomment %}
+          <h5>Today's Event</h5>
+          <div class="table-responsive mt-3">
+            <table class="table table-hover table-bordered table-striped text-center">
+              <thead>
+                <tr>
+                  <th scope="col">SID</th>
+                  <th scope="col">Topic</th>                  
+                  <th scope="col">Type</th>
+                  <th scope="col">Mode</th>
+                  <th scope="col">Time</th>
+                  <th scope="col">Participant</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td scope="row">001</td>
+                  <td>Topic</td>
+                  <td>Workshop</td>
+                  <td>Online</td>
+                  <td>9:45PM</td>
+                  <td>50</td>
+                  <td>                    
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                      <button type="button" class="btn btn-outline-primary me-1 rounded">
+                        <i class="fa-solid fa-eye"></i>
+                      </button>
+                      <button type="button" class="btn btn-outline-success me-1 rounded">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                      </button>
+                      <button type="button" class="btn btn-outline-danger rounded">
+                        <i class="fa-solid fa-trash-can"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="card shadow m-3 py-3 w-100">
+        <div class="container m-0">
+            {% comment %} event info from patient event db {% endcomment %}
+          <h5>Past Event</h5>
+          <div class="table-responsive mt-3">
+            <table class="table table-hover table-bordered table-striped text-center">
+              <thead>
+                <tr>
+                    <th scope="col">SID</th>
+                    <th scope="col">Topic</th>                  
+                    <th scope="col">Type</th>
+                    <th scope="col">Mode</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Time</th>
+                    <th scope="col">Participant</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td scope="row">001</td>
+                    <td>Topic</td>
+                    <td>Workshop</td>
+                    <td>Online</td>
+                    <td>07/07/2024</td>
+                    <td>9:45PM</td>
+                    <td>50</td>
+                    <td>                    
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                          <button type="button" class="btn btn-outline-primary me-1 rounded">
+                            <i class="fa-solid fa-eye"></i>
+                          </button>
+                          <button type="button" class="btn btn-outline-success me-1 rounded">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                          </button>
+                          <button type="button" class="btn btn-outline-danger rounded">
+                            <i class="fa-solid fa-trash-can"></i>
+                          </button>
+                        </div>
+                      </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Today Section End -->
+
+
+    <!-- Workshop & Seminar Chart Section Start -->
+    <div>
+      <div class="row">
+        <div class="col">
+          <div class="card shadow p-3">
+            {% comment %} patient appointment chart db {% endcomment %}
+            <h4>Workshop Chart</h4>
+            <div id="appointment-chart"></div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card shadow p-3">
+            {% comment %} patient event chart db {% endcomment %}
+            <h4>Seminar Chart</h4>
+            <div id="event-chart"></div>
+          </div>
+        </div>            
+      </div>
+    </div>            
+    <!-- Workshop & Seminar Chart Section Start -->
+    <!-- Workshop & Seminar Chart Section Start -->
+    <div>
+        <div class="row">
+          <div class="col">
+            <div class="card shadow p-3">
+              {% comment %} patient appointment chart db {% endcomment %}
+              <h4>Workshop Chart</h4>
+              <div id="appointment-chart"></div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card shadow p-3">
+              {% comment %} patient event chart db {% endcomment %}
+              <h4>Seminar Chart</h4>
+              <div id="event-chart"></div>
+            </div>
+          </div>            
+        </div>
+      </div>        
+      <!-- Appoinment & Event Chart Section End -->
+
+    
+
+    <!-- End home content -->
+
+{% endblock %}

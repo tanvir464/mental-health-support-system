@@ -1,0 +1,259 @@
+{% extends 'patient/base_app.html '%} {% block content %}
+
+<!-- Start home content -->
+<div class="card shadow">
+  <h3 class="text-center p-3">Seminar</h3>
+  <form action="" method="post">
+    {% csrf_token %}
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Topic</label>
+          <input
+            type="text"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="topic"
+            value="{{data.1}}"
+            name="topic"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Type</label>
+          <div class="input-group">
+            <input
+            type="text"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="topic"
+            value="Seminar"
+            readonly
+          />
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Mode</label>
+          <div class="input-group">
+            <select
+              class="form-select form-select-sm"
+              aria-label="Small select example"
+              name="mode"
+            >
+            {% if data.3 == 1 %}
+              <option value="1" selected>Online</option>
+              <option value="2">Physical</option>
+            {% elif data.3 == 2 %}
+              <option value="1">Online</option>
+              <option value="2" selected>Physical</option>
+            {% endif %}
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label"
+            >Duration(hr)</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="duration"
+            value="{{data.6}}"
+            name="duration"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Date</label>
+          <input
+            type="date"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="date"
+            value="{{data.4}}"
+            name="date"
+          />
+        </div>
+      </div>
+      <div class="col">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Time</label>
+          <input
+            type="time"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="time"
+            value="{{data.5}}"
+            name="time"
+          />
+        </div>
+      </div>
+      <div class="col">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label"
+            >Location</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="house no, plot no, road no, area, district, division"
+            value="{{data.8}}"
+            name="address"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">      
+      <div class="col">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Sponshorship</label>
+          <input
+            type="text"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="sponshorship"
+            value="{{data.10}}"
+            name="sponshor"
+          />
+        </div>
+      </div>
+      <div class="col">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Agenda</label>
+          <input
+            type="text"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="agenda"
+            value="{{data.11}}"
+            name="agenda"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Lecture Note</label>
+          <input
+            type="file"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="activities"
+            value="{{data.9}}"
+            name="note"
+          />
+        </div>
+      </div>
+      <div class="col">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Presentation Slide</label>
+          <input
+            type="file"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="file"
+            value="{{data.12}}"
+            name="slide"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+  <div class="col">
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label">Speaker</label>
+      <div class="input-group">
+        <select
+          class="form-select form-select-sm"
+          aria-label="Small select example"
+          name="speaker"
+          id="speaker"
+          value="Hi"
+        >              
+        <option selected>Select</option>             
+        {% for f in sp %}              
+          <option value={{f.0}}>{{f.1}} {{f.2}}(
+            {% if f.3 == 2 %}Psychiatrist
+            {% elif f.3 == 3 %}Psychologist
+            {% endif %}
+            )</option>
+        {% endfor %}
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div style="color:white;">  .</div>
+    <button class="butn speaker">Add Speaker</button>
+  </div>
+</div>
+</div>
+  <div class="col m-3">
+    <div id="editor" style="height: 100px">
+      <h2>Event description</h2>
+      <p>Preset build with <code>snow</code> theme, and some common formats.</p>
+    </div>
+  </div>
+  <div class="col text-end m-3">
+    <button type="submit" class="butn">Create</button>
+  </div>
+  </form>
+</div>
+<!-- End home content -->
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  {% comment %} speaker {% endcomment %}
+  $(document).ready(function() {
+      $('.speaker').click(function() {
+          var c = 'speaker';
+          d = document.getElementById('speaker')
+          var data = d.value
+          $.ajax({
+              type: "POST",
+              url: '{% url "organization:seminar" data.0 %}',
+              headers: {
+                  'X-CSRFToken' : '{{ csrf_token }}'
+              },
+              data: {
+                  "data" : data,
+                  'c' : c,
+              },
+              success: function(response) {
+                  if (response.status === 'success') {
+                      alert('Speaker have added');
+                  }
+                  else {
+                      alert("Some error happned");
+                  }
+              }
+          });             
+      });
+  });
+</script>
+
+{% endblock %}

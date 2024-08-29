@@ -1,0 +1,287 @@
+{% extends 'patient/base_app.html '%} {% block content %}
+<!-- Start home content -->
+<div class="card p-2 shadow">
+  <h2 class="text-center p-3">Events</h2>
+  <div class="card">
+    <div class="container">
+      <div class="row">
+        <div class="col text-start">
+          <h4>Upcoming Events</h4>
+        </div>
+        <div class="col text-end">
+          <a href="{% url "organization:create_event" %}">
+          <button type="button" class="btn btn-success">
+            Create Event
+          </button></a>
+        </div>
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <div class="row g-3 justify-content-start">
+                <div class="col-auto">
+                  <label for="search" class="col-form-label">From: </label>
+                </div>
+                <div class="col-auto">
+                  <input
+                    type="date"
+                    id="search"
+                    class="form-control d-inline-block"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="row g-3 justify-content-end">
+                <div class="col-auto">
+                  <label for="search" class="col-form-label">To: </label>
+                </div>
+                <div class="col-auto">
+                  <input
+                    type="date"
+                    id="search"
+                    class="form-control d-inline-block"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="table-responsive mt-3">
+              <table
+                class="table table-hover table-bordered table-striped text-center"
+              >
+                <thead>
+                  <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Topic</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Mode</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Time</th>
+                    <th scope="col">Duration</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for d in data %}
+                  {% if d.7 == 1 %}
+                  <tr>
+                    <td scope="row">{{d.0}}</td>
+                    <td>
+                      <span class="mx-1">{{d.1}}</span>
+                    </td>
+                    <td>
+                      {% if d.2 == 1 %}Workshop
+                      {% elif d.2 == 2 %}Seminar{% endif %}
+                    </td>
+                    <td>
+                      {% if d.3 == 1 %}Online
+                      {% elif d.3 == 2 %}Physical{% endif %}
+                    </td>
+                    <td>{{d.4}}</td>
+                    <td>{{d.5}}</td>
+                    <td>{{d.6}}</td>
+                    <td>
+                      <div
+                        class="btn-group"
+                        role="group"
+                        aria-label="Basic example"
+                      >
+                      <a href="{% url "organization:event_card" d.0 %}">
+                        <button
+                          type="button"
+                          class="btn btn-outline-primary me-1 rounded"
+                        >                          
+                            <i class="fa-solid fa-eye"></i
+                          >
+                        </button></a>
+                        {% if d.2 == 1 %}
+                          <a href="{% url "organization:workshop" d.0 %}">
+                        {% elif d.2 == 2 %}
+                          <a href="{% url "organization:seminar" d.0 %}">
+                        {% endif %}
+                        <button
+                          type="button"
+                          class="btn btn-outline-success me-1 rounded"
+                        >
+                          <i class="fa-solid fa-pen-to-square"></i>
+                        </button></a>                        
+                        
+                        <button
+                          type="button"
+                          class="btn btn-outline-danger rounded"
+                        >
+                          <i class="fa-solid fa-trash-can"></i>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  {% endif %}
+                  {% endfor %}
+                </tbody>
+              </table>
+              <nav aria-label="...">
+                <ul class="pagination justify-content-center">
+                  <li class="page-item disabled">
+                    <a
+                      class="page-link"
+                      href="#"
+                      tabindex="-1"
+                      aria-disabled="true"
+                      >Previous</a
+                    >
+                  </li>
+                  <li class="page-item"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item active" aria-current="page">
+                    <a class="page-link" href="#">2</a>
+                  </li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="container">
+      <div class="row">
+        <div class="col text-start">
+          <h4>Past Events</h4>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="row g-3 justify-content-start">
+            <div class="col-auto">
+              <label for="search" class="col-form-label">From: </label>
+            </div>
+            <div class="col-auto">
+              <input
+                type="date"
+                id="search"
+                class="form-control d-inline-block"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="row g-3 justify-content-end">
+            <div class="col-auto">
+              <label for="search" class="col-form-label">To: </label>
+            </div>
+            <div class="col-auto">
+              <input
+                type="date"
+                id="search"
+                class="form-control d-inline-block"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="table-responsive mt-3">
+          <table
+          class="table table-hover table-bordered table-striped text-center"
+        >
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Topic</th>
+              <th scope="col">Type</th>
+              <th scope="col">Mode</th>
+              <th scope="col">Date</th>
+              <th scope="col">Time</th>
+              <th scope="col">Duration</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for d in data %}
+            {% if d.7 == 2 %}
+            <tr>
+              <td scope="row">{{d.0}}</td>
+              <td>
+                <span class="mx-1">{{d.1}}</span>
+              </td>
+              <td>
+                {% if d.2 == 1 %}Workshop
+                {% elif d.2 == 2 %}Seminar{% endif %}
+              </td>
+              <td>
+                {% if d.3 == 1 %}Online
+                {% elif d.3 == 2 %}Physical{% endif %}
+              </td>
+              <td>{{d.4}}</td>
+              <td>{{d.5}}</td>
+              <td>{{d.6}}</td>
+              <td>
+                <div
+                  class="btn-group"
+                  role="group"
+                  aria-label="Basic example"
+                >
+                  <button
+                    type="button"
+                    class="btn btn-outline-primary me-1 rounded"
+                  >
+                    <a href="{% url "organization:event_card" %}">
+                      <i class="fa-solid fa-eye"></i
+                    ></a>
+                  </button>
+                  {% if d.2 == 1 %}
+                    <a href="{% url "organization:workshop" d.0 %}">
+                  {% elif d.2 == 2 %}
+                    <a href="{% url "organization:seminar" d.0 %}">
+                  {% endif %}
+                  <button
+                     type="button"
+                     class="btn btn-outline-success me-1 rounded"
+                  >
+                     <i class="fa-solid fa-pen-to-square"></i>
+                  </button></a>   
+                  <button
+                    type="button"
+                    class="btn btn-outline-danger rounded"
+                  >
+                    <i class="fa-solid fa-trash-can"></i>
+                  </button>
+                </div>
+              </td>
+            </tr>
+            {% endif %}
+            {% endfor %}
+          </tbody>
+        </table>
+          <nav aria-label="...">
+            <ul class="pagination justify-content-center">
+              <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1" aria-disabled="true"
+                  >Previous</a
+                >
+              </li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item active" aria-current="page">
+                <a class="page-link" href="#">2</a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item">
+                <a class="page-link" href="#">Next</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="card shadow">
+  <h3 class="m-3">Chart</h3>
+  <div id="event-chart"></div>
+</div>
+<!-- End home content -->
+
+{% endblock %}

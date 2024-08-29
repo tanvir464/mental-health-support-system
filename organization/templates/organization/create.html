@@ -1,0 +1,135 @@
+{% extends 'patient/base_app.html '%} {% block content %}
+
+<!-- Start home content -->
+<div class="card shadow">
+  <h3 class="text-center p-3">Create Event</h3>
+  <form action="" method="post">
+    {% csrf_token %}
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Topic</label>
+          <input
+            type="text"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="topic"
+            name = "topic"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Type</label>
+          <div class="input-group">
+            <select
+              class="form-select form-select-sm"
+              aria-label="Small select example"
+              name = "type"
+            >
+              <option selected>Select</option>
+              <option value="1">Workshop</option>
+              <option value="2">Seminar</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Mode</label>
+          <div class="input-group">
+            <select
+              class="form-select form-select-sm"
+              aria-label="Small select example"
+              name = "mode"
+            >
+              <option selected>Select</option>
+              <option value="1">Online</option>
+              <option value="2">Physical</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label"
+            >Duration</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="duration in hour"
+            name = 'duration'
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Date</label>
+          <input
+            type="date"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="date"
+            name="date"
+          />
+        </div>
+      </div>
+      <div class="col">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Time</label>
+          <input
+            type="time"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="time"
+            name="time"
+          />
+        </div>
+      </div>
+      <div class="col">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label"
+            >Location</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="address"
+            placeholder="house no, plot no, road no, area, district, division"
+            name="address"
+            onclick="h()"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col m-3">
+    <h2>Event description</h2>
+    <div id="editor" style="height: 100px">
+      <h2>Event description</h2>
+      <p>Preset build with <code>snow</code> theme, and some common formats.</p>
+    </div>
+  </div>
+  <div class="col text-end m-3">
+    <button type="submit" class="butn">Create</button>
+  </div>
+</form>
+</div>
+<!-- End home content -->
+<script>
+  function h() {
+    alert("If mode in online then give your meet link here")
+  }
+</script>
+{% endblock %}
