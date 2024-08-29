@@ -23,7 +23,8 @@ from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('baseapp/',include("baseapp.urls")),
+    # changes
+    path('',include("baseapp.urls")),
     path('registration/',include("registration.urls")),
     path('organization/',include("organization.urls")), 
     path('patient/',include("patient.urls")),
