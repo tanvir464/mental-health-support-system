@@ -1,0 +1,46 @@
+{% extends 'patient/base_app.html '%} {% block content %}
+
+<div class="main-content" style="min-height: 100vh">
+  <!-- Start home content -->
+  <div class="card shadow-lg">
+    <h2 class="pt-3 text-center">Schedule</h2>
+    <div class="container p-3">
+      <div id="calendar"></div>
+
+      <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.14/index.global.min.js"></script>
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          var calendarEl = document.getElementById("calendar");
+          var calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: "dayGridMonth",
+            events: [
+              {
+                title: "Hello",
+                start: "2024-06-22T10:30:00",
+                end: "2024-06-23T11:30:00",
+                extendedProps: {
+                  department: "CSE",
+                },
+                description: "Lecture",
+              },
+              {
+                title: "Hello",
+                start: "2024-06-24T10:30:00",
+                end: "2024-06-25T11:30:00",
+                extendedProps: {
+                  department: "CSE",
+                },
+                description: "Lecture",
+              },
+            ],
+          });
+          calendar.render();
+        });
+      </script>
+    </div>
+  </div>
+
+  <!-- End home content -->
+
+  {% endblock %}
+</div>

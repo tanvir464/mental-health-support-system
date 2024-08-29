@@ -1,0 +1,18 @@
+{% extends 'patient/base_app.html '%} {% block content %} {% load static %}
+
+<!-- Home Section -->
+<div class="main-content" style="min-height: 100vh">
+  <!-- Start home content -->
+  <div class="card p-2 shadow gx-3 border-0">
+    <div class="text-center">
+        <h1>Congratulation</h1>
+        <h5>Dear {{data.0}} {{data.1}}</h5>
+        <p>Account type : {% if data.2 == 1 %}Patient {% elif data.2 == 2 %}Psychiatrist {% elif data.2 == 3 %}Psychologist{% endif %}</p>
+        <p>Your account is pending. Wait for a moment.</p>
+    </div>
+  </div>
+</div>
+  <!-- End home content -->
+
+  {% endblock %}
+</div>

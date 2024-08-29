@@ -1,0 +1,34 @@
+{% extends 'patient/base_app.html '%} {% block content %}
+
+<!-- Home Section -->
+{% comment %} <div class="main-content" style="min-height: 100vh"> {% endcomment %}
+  <div class="card shadow p-3">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <h2>{{data.2}}</h2>
+          <h4>{{data.6}} {{data.7}} ({% if data.8 == 2 %}Psychiatrist{% elif data.8 == 3 %}Psychologist{% endif %})</h4>
+          <h5>Type : {{data.3}}</h5>
+          <p>Date: {{data.4}}</p>          
+        </div>
+        <div class="col text-end">
+          <img
+            src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+            class="card-img-top"
+            alt="..."
+            style="width: 300px; height: 300px"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <h4>Description</h4>
+      <p>
+        {{data.5}}
+      </p>
+    </div>
+  </div>
+</div>
+<!-- End home content -->
+
+{% endblock %}

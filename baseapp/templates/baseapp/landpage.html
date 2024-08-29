@@ -1,0 +1,317 @@
+{% include "patient/header.html" %}
+{% load static %}
+
+<!-- Home Section -->
+<div class="main-content" style="min-height: 100vh; background-color: #081b29; color: white;">
+    <!-- Start home content -->
+    <div class="" style="margin-top: 20px; background-color: #081b29;  box-shadow: 0 0 10px #0ef;">
+      <div class="p-3">
+        <div class="row">
+          <div class="col" style="cursor: pointer;" title="MHM Logo">                      
+            <h3 class>
+              <img src="{% static "img/logoV2.png" %}" class="img-fluid" style="width: 50px;" />
+              <span style="color: #0ef;">MHM System</span>
+            </h3>
+        </div>
+          <div class="col-6">
+            <div class="container">
+              <div class="row">                    
+                <div class="col">
+                  <a style="color:white" href="#home" style="color: white;">Home</a>
+                </div>
+                <div class="col">
+                  <a style="color:white" href="#about" style="color: white;">About Us</a>
+                </div>
+                <div class="col">
+                    <a style="color:white" href="#contact" style="color: white;">Services</a>
+                  </div>
+                <div class="col">
+                  <a style="color:white" href="#contact" style="color: white;">Contact</a>
+                </div>
+              </div>
+            </div>
+          </div>  
+          <!-- <div class="col">
+            <div style="display: flex; justify-content: end;">
+            <button type="button" class="butn">Login</button>
+            <button type="button" class="butn">Sign up</button>
+          </div>
+          </div> -->
+          <div class="col text-end">
+            <a href="{% url "registration:login" %}">
+            <button type="button" class="btn btn-success">Login</button></a>
+            <a href="{% url "registration:signup" %}">
+            <button type="button" class="btn btn-success">Sign up</button></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="" style="margin-top: 20px; background-color: #081b29;  box-shadow: 0 0 10px #0ef;">
+      <div class="p-3" id="home">
+        <div class="">
+          <div class="row">
+            <div class="col-9" style="text-align: justify;">
+              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                and scrambled it to make a type specimen book. It has survived not only five centuries, but also the
+                leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s
+                with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
+                publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            </div>
+            <div class="col text-end">
+              <img
+                src="data:image/jpeg;base64,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">
+            </div>
+          </div>
+          <h4>Our Services</h4>
+          <p style="text-align: justify;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+            industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+            scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
+            into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the
+            release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
+            software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+          <div class="container pt-3">
+            <div class="row">
+              <div class="col rounded text-center p-2 m-2" style=" box-shadow: 0 0 10px #0ef; background-color: rgba(255,0,0,0.5);">
+                <div class="pt-2"><i style="color:white" class="fa-solid fa-user"></i></div>
+                <h4>Patient</h4>
+                <h3>1204+</h3>
+                <h5>Increased 40%</h5>
+              </div>
+              <div class="col rounded text-center p-2 m-2" style=" box-shadow: 0 0 10px #0ef; background-color: rgba(0,255,0,0.5);">
+                <div class="pt-2"><i style="color:white" class="fa-solid fa-user-doctor"></i></div>
+                <h4>Specialist</h4>
+                <h3>150+</h3>
+                <h5>Increased 20%</h5>
+              </div>
+              <div class="col rounded text-center p-2 m-2" style=" box-shadow: 0 0 10px #0ef; background-color: rgba(255,0,255,0.5);">
+                <div class="pt-2"><i style="color:white" class="fa-solid fa-user-group"></i></div>
+                <h4>Councelor</h4>
+                <h3>80+</h3>
+                <h5>Increased 5%</h5>
+              </div>
+              <div class="col rounded text-center p-2 m-2" style=" box-shadow: 0 0 1dvi #0ef; background-color: rgba(0,0,255,0.5);">
+                <div class="pt-2"><i style="color:white" class="fa-solid fa-building-ngo"></i></div>
+                <h4>Organization</h4>
+                <h3>25+</h3>
+                <h5>Increased 60%</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="">
+      <div class="row">
+        <div class="col">
+          <div class="" style="margin-top: 20px;  box-shadow: 0 0 10px #0ef;">
+            <div id="patient-chart"></div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="" style="margin-top: 20px;  box-shadow: 0 0 10px #0ef;">
+            <div id="doctor-chart"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="">
+      <div class="row">
+        <div class="col">
+          <div class="" style="margin-top: 20px;  box-shadow: 0 0 10px #0ef;">
+            <div id="organization-chart"></div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="" style="margin-top: 20px;  box-shadow: 0 0 10px #0ef;">
+            <div id="event-chart"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Map Section Start -->
+    <div class="" style="margin-top: 20px; background-color: #081b29;  box-shadow: 0 0 10px #0ef;">
+      <div class="px-2 rounded-2" style="padding: 10px 10px 0 10px!important;">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m26!1m12!1m3!1d58411.5429795101!2d90.35532699161713!3d23.792931981941408!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m11!3e6!4m3!3m2!1d23.800622399999998!2d90.4237212!4m5!1s0x3755c0ae51b4a911%3A0xce896671d4023718!2sQ9C9%2BX74%20National%20Institute%20of%20Mental%20Health%20(NIMH)%20%26%20Hospital%2C%20Dhaka%201207!3m2!1d23.772375099999998!2d90.36819609999999!5e0!3m2!1sen!2sbd!4v1719134369636!5m2!1sen!2sbd"
+          height="400" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+    </div>
+    <!-- Map Section End -->
+    <!-- Contact Section Start -->
+    <div class="" style="margin-top: 20px; background-color: #081b29;  box-shadow: 0 0 10px #0ef;">
+      <div class="">
+        <section class="py-3 py-md-5 py-xl-4">
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-12 col-lg-12 text-center">
+                <h3 class="fs-5 mb-2 text-secondary text-uppercase">Send Message</h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="container">
+            <div class="row gy-4 gy-md-5 gy-lg-0 align-items-md-center">
+              <!-- Left Side -->
+              <div class="col-12 col-lg-6">
+                <div class="border border-5 overflow-hidden">
+
+                  <form action="#!">
+                    <div class="row gy-4 gy-xl-4 p-4 p-xl-5">
+                      <div class="col-12">
+                        <label for="fullname" class="form-label">Full Name
+                          <span class="text-danger">*</span>
+                        </label>
+                        <div class="input-group">
+                          <span class="input-group-text">
+                            <i class="fa-solid fa-user"></i>
+                          </span>
+                          <input type="text" class="form-control" id="fullname" name="fullname" value="" required>
+                        </div>
+                      </div>
+                      <div class="col-12 col-md-12">
+                        <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
+                        <div class="input-group">
+                          <span class="input-group-text">
+                            <i class="fa-solid fa-envelope"></i>
+                          </span>
+                          <input type="email" class="form-control" id="email" name="email" value="" required>
+                        </div>
+                      </div>
+                      <div class="col-12 col-md-12">
+                        <label for="phone" class="form-label">
+                          Phone Number
+                        </label>
+                        <div class="input-group">
+                          <span class="input-group-text">
+                            <i class="fa-solid fa-phone"></i>
+                          </span>
+                          <input type="tel" class="form-control" id="phone" name="phone" value="">
+                        </div>
+                      </div>
+                      <div class="col-12">
+                        <label for="subject" class="form-label">Subject <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="subject" name="subject" value="" required>
+                      </div>
+                      <div class="col-12">
+                        <label for="message" class="form-label">Message
+                          <span class="text-danger">*</span>
+                        </label>
+                        <textarea class="form-control" id="message" name="message" rows="3" required></textarea>
+                      </div>
+                      <div class="col-12">
+                        <div class="d-grid">
+                          <button class="btn btn-success btn-lg" type="submit">
+                            Send Message
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+
+                </div>
+              </div>
+              <!-- Right Side -->
+              <div class="col-12 col-lg-6 border border-5">
+                <div class="row justify-content-xl-center">
+                  <div class="col-12 col-xl-11">
+                    <div class="mb-4 mb-md-5">
+                      <div class="mb-3 text-primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+                          class="bi bi-geo" viewBox="0 0 16 16">
+                          <path fill-rule="evenodd"
+                            d="M8 1a3 3 0 1 0 0 6 3 3 0 0 0 0-6zM4 4a4 4 0 1 1 4.5 3.969V13.5a.5.5 0 0 1-1 0V7.97A4 4 0 0 1 4 3.999zm2.493 8.574a.5.5 0 0 1-.411.575c-.712.118-1.28.295-1.655.493a1.319 1.319 0 0 0-.37.265.301.301 0 0 0-.057.09V14l.002.008a.147.147 0 0 0 .016.033.617.617 0 0 0 .145.15c.165.13.435.27.813.395.751.25 1.82.414 3.024.414s2.273-.163 3.024-.414c.378-.126.648-.265.813-.395a.619.619 0 0 0 .146-.15.148.148 0 0 0 .015-.033L12 14v-.004a.301.301 0 0 0-.057-.09 1.318 1.318 0 0 0-.37-.264c-.376-.198-.943-.375-1.655-.493a.5.5 0 1 1 .164-.986c.77.127 1.452.328 1.957.594C12.5 13 13 13.4 13 14c0 .426-.26.752-.544.977-.29.228-.68.413-1.116.558-.878.293-2.059.465-3.34.465-1.281 0-2.462-.172-3.34-.465-.436-.145-.826-.33-1.116-.558C3.26 14.752 3 14.426 3 14c0-.599.5-1 .961-1.243.505-.266 1.187-.467 1.957-.594a.5.5 0 0 1 .575.411z" />
+                        </svg>
+                      </div>
+                      <div>
+                        <h4 class="mb-2">Office</h4>
+                        <p class="mb-2">Please visit us to have a discussion.</p>
+                        <hr class="w-50 mb-3 border-dark-subtle">
+                        <address class="m-0 text-secondary"> Dhaka, Bangladesh
+                        </address>
+                      </div>
+                    </div>
+                    <div class="row mb-sm-4 mb-md-5">
+                      <div class="col-12 col-sm-6">
+                        <div class="mb-4 mb-sm-0">
+                          <div class="mb-3 text-primary">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+                              class="bi bi-telephone-outbound" viewBox="0 0 16 16">
+                              <path
+                                d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511zM11 .5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V1.707l-4.146 4.147a.5.5 0 0 1-.708-.708L14.293 1H11.5a.5.5 0 0 1-.5-.5z" />
+                            </svg>
+                          </div>
+                          <div>
+                            <h4 class="mb-2">Phone</h4>
+                            <p class="mb-2">Please speak with us directly.</p>
+                            <hr class="w-75 mb-3 border-dark-subtle">
+                            <p class="mb-0">
+                              <a style="color:white" class="link-secondary text-decoration-none"
+                                href="tel:+15057922430">+8801************</a>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-12 col-sm-6">
+                        <div class="mb-4 mb-sm-0">
+                          <div class="mb-3 text-primary">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+                              class="bi bi-envelope-at" viewBox="0 0 16 16">
+                              <path
+                                d="M2 2a2 2 0 0 0-2 2v8.01A2 2 0 0 0 2 14h5.5a.5.5 0 0 0 0-1H2a1 1 0 0 1-.966-.741l5.64-3.471L8 9.583l7-4.2V8.5a.5.5 0 0 0 1 0V4a2 2 0 0 0-2-2H2Zm3.708 6.208L1 11.105V5.383l4.708 2.825ZM1 4.217V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v.217l-7 4.2-7-4.2Z" />
+                              <path
+                                d="M14.247 14.269c1.01 0 1.587-.857 1.587-2.025v-.21C15.834 10.43 14.64 9 12.52 9h-.035C10.42 9 9 10.36 9 12.432v.214C9 14.82 10.438 16 12.358 16h.044c.594 0 1.018-.074 1.237-.175v-.73c-.245.11-.673.18-1.18.18h-.044c-1.334 0-2.571-.788-2.571-2.655v-.157c0-1.657 1.058-2.724 2.64-2.724h.04c1.535 0 2.484 1.05 2.484 2.326v.118c0 .975-.324 1.39-.639 1.39-.232 0-.41-.148-.41-.42v-2.19h-.906v.569h-.03c-.084-.298-.368-.63-.954-.63-.778 0-1.259.555-1.259 1.4v.528c0 .892.49 1.434 1.26 1.434.471 0 .896-.227 1.014-.643h.043c.118.42.617.648 1.12.648Zm-2.453-1.588v-.227c0-.546.227-.791.573-.791.297 0 .572.192.572.708v.367c0 .573-.253.744-.564.744-.354 0-.581-.215-.581-.8Z" />
+                            </svg>
+                          </div>
+                          <div>
+                            <h4 class="mb-2">Email</h4>
+                            <p class="mb-2">Please write to us directly.</p>
+                            <hr class="w-75 mb-3 border-dark-subtle">
+                            <p class="mb-0">
+                              <a style="color:white" class="link-secondary text-decoration-none" href="mailto:mail@example.com">
+                                mail@example.com
+                              </a>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <div class=" mb-3 text-primary">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+                                  class="bi bi-alarm" viewBox="0 0 16 16">
+                                  <path
+                                    d="M8.5 5.5a.5.5 0 0 0-1 0v3.362l-1.429 2.38a.5.5 0 1 0 .858.515l1.5-2.5A.5.5 0 0 0 8.5 9V5.5z" />
+                                  <path
+                                    d="M6.5 0a.5.5 0 0 0 0 1H7v1.07a7.001 7.001 0 0 0-3.273 12.474l-.602.602a.5.5 0 0 0 .707.708l.746-.746A6.97 6.97 0 0 0 8 16a6.97 6.97 0 0 0 3.422-.892l.746.746a.5.5 0 0 0 .707-.708l-.601-.602A7.001 7.001 0 0 0 9 2.07V1h.5a.5.5 0 0 0 0-1h-3zm1.038 3.018a6.093 6.093 0 0 1 .924 0 6 6 0 1 1-.924 0zM0 3.5c0 .753.333 1.429.86 1.887A8.035 8.035 0 0 1 4.387 1.86 2.5 2.5 0 0 0 0 3.5zM13.5 1c-.753 0-1.429.333-1.887.86a8.035 8.035 0 0 1 3.527 3.527A2.5 2.5 0 0 0 13.5 1z" />
+                                </svg>
+                          </div>
+                          <div>
+                            <h4 class="mb-2">Opening Hours</h4>
+                            <p class="mb-2">Explore our business opening hours.</p>
+                            <hr class="w-50 mb-3 border-dark-subtle">
+                            <div class="d-flex mb-1">
+                              <p class="text-secondary fw-bold mb-0 me-5">Sun - Wed</p>
+                              <p class="text-secondary mb-0">10am - 2pm</p>
+                            </div>
+                            <div class="d-flex">
+                              <p class="text-secondary fw-bold mb-0 me-5">Thu - Sat</p>
+                              <p class="text-secondary mb-0">10am - 4pm</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </section>
+      </div>
+    </div>
+    <!-- Contact Section End -->
+
+    <!-- End content -->
+
+{% include "patient/footer.html" %}
