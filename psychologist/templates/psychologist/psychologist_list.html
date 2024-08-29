@@ -1,0 +1,86 @@
+{% extends 'patient/base_app.html '%} {% block content %}
+<!-- Start home content -->
+<div class="card p-2 shadow gx-3 border-0">
+  <!-- Add button -->
+  <div class="container mb-4 pt-3">
+    <div class="row">
+      <div class="col-10">
+        <h2 class="fs-5">Psychologist List</h2>
+      </div>
+      <div class="col-2 text-end p-0">
+        {% if user == "admin" %}
+        <a href="{% url "common:pending_specialist" %}">
+          <button type="button" class="btn btn-primary">
+            Add psychologist
+          </button></a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  <!-- Search input -->
+  <div class="row g-3 justify-content-end">    
+    <div class="col-auto">
+      <input type="text" id="search" class="form-control d-inline-block" placeholder="psychologist name"/>
+    </div>
+    <div class="col-auto">
+      <button class="btn btn-primary">Search</button>
+    </div>
+  </div>
+
+  <div class="table-responsive mt-3">
+    <div class="card">
+      <div class="container">
+        <div class="row">
+          {% for d in data %}
+          <div class="col-3">
+            <div class="card shadow border border-2">
+              <a href="{% url "psychologist:card" d.0 %}">
+                <div class="">
+                  <img
+                    class="d-flex flex-wrap align-items-center cardImg"
+                    alt="Councelor Photo"
+                    src="https://st2.depositphotos.com/1177973/10308/i/950/depositphotos_103086720-stock-photo-stethoscope-with-open-book-and.jpg"
+                  />
+                </div>
+                <div class="p-2">
+                  <div class="row">
+                    <h5 class="text-center">{{d.1}} {{d.2}}</h5>
+                    <p class="text-center">{{d.18}}</p>
+                    <div class="col">
+                      <p>Psychologist</p>
+                    </div>
+                    <div class="col text-end">
+                      <p>{{d.20}}/5</p>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+          {% endfor %}                    
+          </div>
+        </div>
+      </div>
+
+      <nav aria-label="...">
+        <ul class="pagination justify-content-center">
+          <li class="page-item disabled">
+            <a class="page-link" href="#" tabindex="-1" aria-disabled="true"
+              >Previous</a
+            >
+          </li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item active" aria-current="page">
+            <a class="page-link" href="#">2</a>
+          </li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item">
+            <a class="page-link" href="#">Next</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <!-- End home content -->
+  {% endblock %}
+</div>

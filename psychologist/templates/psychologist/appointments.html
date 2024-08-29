@@ -1,0 +1,181 @@
+{% extends 'patient/base_app.html '%} {% block content %}
+
+<!-- Start home content -->
+<div class="card m-1 p-2 shadow gx-3 border-0">
+  <!-- Patient List -->
+  <div class="container mb-4 pt-3">
+    <div class="row">
+      <div class="col-12">
+        <h1 class="fs-7 text-center">Appointment</h1>
+      </div>
+    </div>
+  </div>
+  <!-- Search input -->
+  <div class="row g-3 justify-content-end">
+    <div class="col-auto">
+      <label for="search" class="col-form-label">Search: </label>
+    </div>
+    <div class="col-auto">
+      <input type="text" id="search" class="form-control d-inline-block" />
+    </div>
+  </div>
+
+  <div class="table-responsive mt-3">
+    <table class="table table-hover table-bordered table-striped text-center">
+      <thead>
+        <tr>
+          <th scope="col">SID</th>
+          <th scope="col">Patient Name</th>
+          <th scope="col">Gender</th>
+          <th scope="col">Age</th>
+          <th scope="col">Date</th>
+          <th scope="col">Time</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>        
+        {% for d in data %}
+        <tr>
+          <td scope="row">{{d.0}}</td>
+          <td>
+            <img
+              class="rounded-circle border border-2 shadow pImg"
+              alt="avatar1"
+              src="https://mdbcdn.b-cdn.net/img/new/avatars/9.webp"
+            />
+            <span class="mx-1">{{d.1}} {{d.2}}</span>
+          </td>
+          <td>{{d.3}}</td>
+          <td>30</td>
+          <td>{{d.6}}</td>
+          <td>{{d.7}}</td>
+          <td>
+            <div class="btn-group" role="group" aria-label="Basic example">
+              {% if user.1 == 3 %}
+              {% if d.8 != 2 %}
+              <button
+                type="button"
+                class="btn btn-outline-primary me-1 rounded acceptbutton"
+                data-action = "{{d.5}}"
+              >
+                <i class="fa-regular fa-circle-check"></i>
+              </button>
+              {% elif d.8 == 2 %}              
+              <button
+                type="button"
+                class="btn btn-primary me-1 rounded"
+              >
+                <i class="fa-regular fa-circle-check"></i>
+              </button>
+              {% endif %}
+              {% endif %}
+              <a href="{% url "common:appointment_card" d.5 %}">
+              <button
+                type="button"
+                class="btn btn-outline-success me-1 rounded"
+              >              
+                  <i class="fa-solid fa-eye"></i>
+              </button></a>
+              {% if user.1 == 3 %}
+              {% if d.8 != 0 %}
+              <button
+                type="button"
+                class="btn btn-outline-danger rounded rejectbutton"
+                data-action = "{{d.5}}"
+              >
+                <i class="fa-regular fa-circle-xmark"></i>
+              </button>
+              {% elif d.8 == 0 %}
+              <button
+                type="button"
+                class="btn btn-danger rounded"
+              >
+              <i class="fa-regular fa-circle-xmark"></i>
+              </button>
+              {% endif %}
+              {% endif %}
+            </div>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <nav aria-label="...">
+      <ul class="pagination justify-content-center">
+        <li class="page-item disabled">
+          <a class="page-link" href="#" tabindex="-1" aria-disabled="true"
+            >Previous</a
+          >
+        </li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item active" aria-current="page">
+          <a class="page-link" href="#">2</a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item">
+          <a class="page-link" href="#">Next</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
+<!-- End home content -->
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  //accept button function
+  $(document).ready(function() {
+      $('.acceptbutton').click(function() {
+          var action = $(this).data('action');
+          var c = 'acceptbutton';
+          $.ajax({
+              type: "POST",
+              url: '{% url "psychologist:appointments" %}',
+              headers: {
+                  'X-CSRFToken' : '{{ csrf_token }}'
+              },
+              data: {
+                  'action': action,
+                  'c' : c,
+              },
+              success: function(response) {
+                  /*if (response.status === 'success') {
+                      alert('Patient no.' + action + ' is accepted');
+                  }
+                  else {
+                      alert("Some error happned");
+                  }*/
+              }
+          });             
+      });
+  });
+  //reject button function
+  $(document).ready(function() {
+    $('.rejectbutton').click(function() {
+        var action = $(this).data('action');
+        var c = 'rejectbutton';
+        $.ajax({
+            type: "POST",
+            url: '{% url "psychologist:appointments" %}',
+            headers: {
+                'X-CSRFToken' : '{{ csrf_token }}'
+            },
+            data: {
+                'action': action,
+                'c' : c,
+            },
+            success: function(response) {
+                /*if (response.status === 'success') {
+                    alert('Patient no.' + action + ' is accepted');
+                }
+                else {
+                    alert("Some error happned");
+                }*/
+            }
+        });             
+    });
+});
+</script>
+
+{% endblock %}

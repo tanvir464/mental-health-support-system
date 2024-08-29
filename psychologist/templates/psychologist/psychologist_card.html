@@ -1,0 +1,102 @@
+{% extends 'patient/base_app.html '%} {% block content %}
+
+<!-- Home Section -->
+<div class="main-content" style="min-height: 100vh">
+  <!-- Start home content -->
+  <div class="card p-2 shadow gx-3 border-0" style="background-color: #427558">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <h2>{{data.1}} {{data.2}}</h2>
+          <h3>Psychologist</h3>
+          <h5>{{data.18}}</h5>
+          <h5>{{data.4}}</h5>
+          <h5 class="email">{{data.5}}</h5>
+          <h5>{{data.20}}/5</h5>
+          <h5>*****</h5>          
+          <address>House no: {{d.8}}, Road no: {{d.9}}</address>
+        </div>
+        <div class="col text-end">
+          <img
+            class="rounded-circle border border-2 shadow"
+            alt="Specialist Photo"
+            src="https://mdbcdn.b-cdn.net/img/new/avatars/9.webp"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card p-2 shadow gx-3 border-0">
+    <h4>Education & Experience</h4>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos, fugit error
+      ipsa natus quo cum ut laudantium voluptatibus sapiente, molestias, commodi
+      exercitationem accusantium unde numquam amet illo consequuntur tempore
+      hic. Dolores, odio quod. Corrupti esse tempora quos dolore. Alias magnam
+      harum iste unde voluptatibus? Laborum neque quod atque itaque corporis.
+    </p>
+  </div>
+  <div class="card p-2 shadow gx-3 border-0">
+    <h4>Weekly Schedule</h4>
+    <div class="table-responsive mt-3">
+      <table class="table table-hover table-bordered table-striped text-center">
+        <thead>
+          <tr>
+            <th scope="col">Sun</th>
+            <th scope="col">Mon</th>
+            <th scope="col">Tue</th>
+            <th scope="col">Wed</th>
+            <th scope="col">Thu</th>
+            <th scope="col">Fri</th>
+            <th scope="col">Sat</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>9AM-3PM</td>
+            <td>9AM-3PM</td>
+            <td>9AM-3PM</td>
+            <td>9AM-3PM</td>
+            <td>9AM-3PM</td>
+            <td>9AM-3PM</td>
+            <td>9AM-3PM</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="card p-2 shadow gx-3 border-0">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <h5>Today's Schedule : 9AM-3PM</h5>
+          <h5>Today's Appointments : 17</h5>
+        </div>
+        <div class="col text-end">
+          <h5>{{total_appointment}} : Total Appointments</h5>
+          <h5>100 : Total Events</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="card">
+          <div id="patient-chart1"></div>
+        </div>
+      </div>
+      <div class="col text-end">
+        <div class="card">
+          <div id="event-chart"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card p-2 shadow gx-3 border-0">
+    <h3>Reviews & Ratings</h3>
+  </div>
+  <!-- End home content -->
+
+  {% endblock %}
+</div>
