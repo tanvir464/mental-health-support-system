@@ -30,9 +30,10 @@ Users can easily **book doctor appointments**, **receive online prescriptions**,
 ## 🖼️ Demo
 
 <p align="center">
+  <img src="public/assets/img/logoV2.png" alt="MindEase Logo" width="45%" style="margin:10px;">
   <img src="public/assets/img/demo1.png" alt="MindEase Demo 1" width="45%" style="margin:10px;">
-  <img src="public/assets/img/assets/demo2.png" alt="MindEase Demo 2" width="45%" style="margin:10px;"><br>
-  <img src="public/assets/img/assets/demo3.png" alt="MindEase Demo 3" width="45%" style="margin:10px;">
-  <img src="public/assets/img/assets/demo4.png" alt="MindEase Demo 4" width="45%" style="margin:10px;">
+  <img src="public/assets/imgdemo2.png" alt="MindEase Demo 2" width="45%" style="margin:10px;"><br>
+  <img src="public/assets/img/demo3.png" alt="MindEase Demo 3" width="45%" style="margin:10px;">
+  <img src="public/assets/img/demo4.png" alt="MindEase Demo 4" width="45%" style="margin:10px;">
 </p>
 
