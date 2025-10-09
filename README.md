@@ -29,11 +29,12 @@ Users can easily **book doctor appointments**, **receive online prescriptions**,
 
 ## 🖼️ Demo
 
-<p align="center">
-  <img src="public/assets/img/logoV2.png" alt="MindEase Logo" width="45%" style="margin:10px;">
-  <img src="public/assets/img/demo1.png" alt="MindEase Demo 1" width="45%" style="margin:10px;">
-  <img src="public/assets/imgdemo2.png" alt="MindEase Demo 2" width="45%" style="margin:10px;"><br>
-  <img src="public/assets/img/demo3.png" alt="MindEase Demo 3" width="45%" style="margin:10px;">
-  <img src="public/assets/img/demo4.png" alt="MindEase Demo 4" width="45%" style="margin:10px;">
-</p>
+<div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center;">
+  <img src="public/assets/img/logoV2.png" alt="MindEase Logo" style="margin:10px; width:150px; height:auto;">
+  <img src="public/assets/img/demo1.png" alt="MindEase Demo 1" style="margin:10px; width:200px; height:auto;">
+  <img src="public/assets/img/demo2.png" alt="MindEase Demo 2" style="margin:10px; width:200px; height:auto;">
+  <img src="public/assets/img/demo3.png" alt="MindEase Demo 3" style="margin:10px; width:200px; height:auto;">
+  <img src="public/assets/img/demo4.png" alt="MindEase Demo 4" style="margin:10px; width:200px; height:auto;">
+</div>
+
 
